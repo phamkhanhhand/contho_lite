@@ -15,7 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CT.Models\CT.Models.csproj" />
     <ProjectReference Include="..\CT.UserContext\CT.UserContext.csproj" />
-    <ProjectReference Include="..\CT.Util\CT.Utils.csproj" />
+    <ProjectReference Include="..\CT.Utils\CT.Utils.csproj" />
   </ItemGroup>
 
 </Project>

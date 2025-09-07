@@ -6,4 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CT.BL\CT.BL.csproj" />
+    <ProjectReference Include="..\CT.Common\CT.Common.csproj" />
+    <ProjectReference Include="..\CT.DL\CT.DL.csproj" />
+    <ProjectReference Include="..\CT.Utils\CT.Utils.csproj" />
+  </ItemGroup>
+
 </Project>

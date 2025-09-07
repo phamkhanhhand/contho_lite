@@ -15,3 +15,5 @@ CT.Util/bin/
 CT.UserContext/bin/
 CT.Models/bin/
 CT.ImExReport/bin/
+CT.Utils/obj/
+CT.Utils/bin/

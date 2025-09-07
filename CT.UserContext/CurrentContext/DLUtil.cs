@@ -43,8 +43,8 @@ namespace CT.UserContext.CurrentContext
 
             connectionString = XmlConfigReader.GetAppSettingValue("db_connect");
 
-            //connectionString = "Server=ALEXANDERKEVIN\\SQLEXPRESS;Database=KH.ITFamily;Trusted_Connection=True;;TrustServerCertificate=True;";
-            //connectionString = "Server=ALEXANDERKEVIN\\SQLEXPRESS;Database=KH.ITFamily;User Id=sa;Password=1;TrustServerCertificate=True ";
+            //connectionString = "Server=ALEXANDERKEVIN\\SQLEXPRESS;Database=CT;Trusted_Connection=True;;TrustServerCertificate=True;";
+            //connectionString = "Server=ALEXANDERKEVIN\\SQLEXPRESS;Database=CT;User Id=sa;Password=1;TrustServerCertificate=True ";
        
             this.connectionString = connectionString;
         }
