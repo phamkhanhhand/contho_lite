@@ -9,13 +9,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CT.BL", "..\CT.BL\CT.BL.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CT.DL", "..\CT.DL\CT.DL.csproj", "{E48B24AC-907E-4877-878F-05B27748C31B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CT.Util", "..\CT.Util\CT.Util.csproj", "{8BE26294-25AF-4D51-ADFD-F8D8B39319E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CT.Utils", "..\CT.Util\CT.Utils.csproj", "{8BE26294-25AF-4D51-ADFD-F8D8B39319E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CT.Models", "..\CT.Models\CT.Models.csproj", "{7E83EDAD-5075-43E1-A3D6-0D64A49B5816}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CT.ImExReport", "..\CT.ImExReport\CT.ImExReport.csproj", "{79FA7699-B7D5-4820-B074-18FC7F8459D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CT.Common", "..\CT.Common\CT.Common.csproj", "{5ACC8F78-1F40-4594-B700-279629EBADCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CT.UserContext", "..\CT.UserContext\CT.UserContext.csproj", "{1CAED3D9-311B-46F5-AE3B-C82DE4B34823}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{5ACC8F78-1F40-4594-B700-279629EBADCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ACC8F78-1F40-4594-B700-279629EBADCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ACC8F78-1F40-4594-B700-279629EBADCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CAED3D9-311B-46F5-AE3B-C82DE4B34823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CAED3D9-311B-46F5-AE3B-C82DE4B34823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CAED3D9-311B-46F5-AE3B-C82DE4B34823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CAED3D9-311B-46F5-AE3B-C82DE4B34823}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

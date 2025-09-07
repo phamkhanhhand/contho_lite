@@ -7,3 +7,11 @@ CT.Util/obj/
 CT/.vs/
 CT/bin/
 CT/obj/
+CT.BL/bin/
+CT.Common/bin/
+CT.DL/bin/
+CT.UserContext/obj/
+CT.Util/bin/
+CT.UserContext/bin/
+CT.Models/bin/
+CT.ImExReport/bin/
