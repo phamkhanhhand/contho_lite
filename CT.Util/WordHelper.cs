@@ -23,7 +23,7 @@ namespace CT.Utils
     /// <summary>
     /// Tiện ích Docx
     /// </summary>
-    /// pkha 23.06.2023
+    /// phamkhanhhand 23.06.2023
     public static class WordHelper
     {
 

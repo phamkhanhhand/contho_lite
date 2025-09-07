@@ -117,7 +117,7 @@ namespace CT.DL
         /// <typeparam name="T"></typeparam>
         /// <param name="id"></param>
         /// <returns></returns>
-        /// phamha
+        /// phamkhanhhand
         public List<T> SelectDetailByMasterID<T>(object id, string masterIDKey, string detailTableName)
         {
             SqlCommand cmd = new SqlCommand();
@@ -145,7 +145,7 @@ namespace CT.DL
         /// <typeparam name="T"></typeparam>
         /// <param name="id"></param>
         /// <returns></returns>
-        /// phamha
+        /// phamkhanhhand
         public List<T> SelectList<T>(string tableName)
         {
             SqlCommand cmd = new SqlCommand();
@@ -403,7 +403,7 @@ namespace CT.DL
         /// <param name="recordPerPage"></param>
         /// <param name="viewName">Tên bảng, hoặc tên view</param>
         /// <returns></returns>
-        /// phamha Dec 28, 2024
+        /// phamkhanhhand Dec 28, 2024
         public List<T> SelectPagingNotStore<T>(string viewName, int from, int to, out int totalRecord, string sortBy = "", List<FilterSetting> filterSettings = null)
         {
             SqlCommand cmd = new SqlCommand();
@@ -485,14 +485,14 @@ namespace CT.DL
         /// <param name="recordPerPage"></param>
         /// <param name="viewName">Tên bảng, hoặc tên view</param>
         /// <returns></returns>
-        /// phamha Dec 28, 2024
+        /// phamkhanhhand Dec 28, 2024
         public List<T> SelectPagingNotStoreBasicFilter<T>(string viewName, int from, int to, out int totalRecord, string sortBy = "", Dictionary<string, object> dctWhere = null)
         {
             SqlCommand cmd = new SqlCommand();
 
             List<T> lstRs = new List<T>();
 
-            var totalColumnName = "pkha_totalPaging";
+            var totalColumnName = "phamkhanhhand_totalPaging";
 
             sortBy = string.IsNullOrWhiteSpace(sortBy) ? "1" : sortBy;
 
@@ -586,14 +586,14 @@ namespace CT.DL
         /// <param name="recordPerPage"></param>
         /// <param name="viewName">Tên bảng, hoặc tên view</param>
         /// <returns></returns>
-        /// pkha 05.07.2023
+        /// phamkhanhhand 05.07.2023
         public List<T> SelectPagingNotStore_SmallData<T>(string viewName, int from, int to, out int totalRecord, string sortBy = "", Dictionary<string, object> dctWhere = null)
         {
             SqlCommand cmd = new SqlCommand();
 
             List<T> lstRs = new List<T>();
 
-            var totalColumnName = "pkha_totalPaging";
+            var totalColumnName = "phamkhanhhand_totalPaging";
 
             sortBy = string.IsNullOrWhiteSpace(sortBy) ? "1" : sortBy;
 
@@ -711,7 +711,7 @@ namespace CT.DL
         /// <param name="orderBy"></param>
         /// <param name="column"></param>
         /// <returns></returns>
-        /// pkha 15.04.2023
+        /// phamkhanhhand 15.04.2023
         public List<T> SelectPaging<T>
             (
             string objectName,
@@ -763,7 +763,7 @@ namespace CT.DL
         /// <param name="id"></param>
         /// <param name="top"></param>
         /// <returns></returns>
-        /// pkha 17.04.2023
+        /// phamkhanhhand 17.04.2023
         public List<object> GetDetailsByMasterID(Type masterType, Type type, object id, int top = 1000)
         {
             //tạo store rồi get bình thường ; gọi storre chung, truyền querytype
@@ -823,7 +823,7 @@ namespace CT.DL
         /// <param name="id"></param>
         /// <param name="top"></param>
         /// <returns></returns>
-        /// pkha 17.04.2023
+        /// phamkhanhhand 17.04.2023
         public object GetDataByID(Type type, object id)
         {
             //tạo store rồi get bình thường ; gọi storre chung, truyền querytype
@@ -855,7 +855,7 @@ namespace CT.DL
         /// <param name="columnName"></param>
         /// <param name="columnValue"></param>
         /// <returns></returns>
-        /// phamha Nov 23, 2024
+        /// phamkhanhhand Nov 23, 2024
         public T GetDataByColumn<T>(string columnName, object columnValue)
         { 
 
@@ -870,7 +870,7 @@ namespace CT.DL
         /// <param name="columnName"></param>
         /// <param name="columnValue"></param>
         /// <returns></returns>
-        /// phamha Nov 23, 2024
+        /// phamkhanhhand Nov 23, 2024
         public List<T> GetListDataByColumn<T>(string columnName, object columnValue)
         {
 
@@ -1162,7 +1162,7 @@ insert into {0}( " + keyName + @",{1})
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="entityName"></param>
-        /// pkhaok
+        /// phamkhanhhandok
         public void Update(object entity, string entityName)
         { //lấy ra tất cả cái map để insert vào
 
@@ -1266,7 +1266,7 @@ where {1}
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="entityName"></param>
-        /// pkhaok
+        /// phamkhanhhandok
         public void Update(object entity, Type entityType, bool isCheckEditVersion = true)
         { //lấy ra tất cả cái map để insert vào
              

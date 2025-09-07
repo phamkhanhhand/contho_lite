@@ -18,7 +18,7 @@ namespace CT.DL
     /// <summary>
     /// Tiện ích connect
     /// </summary>
-    /// phamha
+    /// phamkhanhhand
     public class DLUtil : IDisposable
     {
 
@@ -54,7 +54,7 @@ namespace CT.DL
         /// <summary>
         /// Mở connect
         /// </summary>
-        /// phamha
+        /// phamkhanhhand
         public void OpenConnection()
         {
             if (con == null || con.State == ConnectionState.Closed)
@@ -66,7 +66,7 @@ namespace CT.DL
         /// <summary>
         /// Đóng connect
         /// </summary>
-        /// phamha
+        /// phamkhanhhand
         public void CloseConnection()
         {
             if (con != null && con.State == ConnectionState.Open)
@@ -80,7 +80,7 @@ namespace CT.DL
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
-        /// phamha
+        /// phamkhanhhand
         public DataSet ExcuteDataSet(string sql)
         {
             OpenConnection();
@@ -100,7 +100,7 @@ namespace CT.DL
         /// </summary>
         /// <param name="cmd"></param>
         /// <returns></returns>
-        /// pkha 17.04.2023
+        /// phamkhanhhand 17.04.2023
         public int ExcuteNonQuery(SqlCommand cmd)
         {
             OpenConnection();
@@ -119,7 +119,7 @@ namespace CT.DL
         /// </summary>
         /// <param name="cmd"></param>
         /// <returns></returns>
-        /// phamha
+        /// phamkhanhhand
         public DataSet ExcuteDataSet(SqlCommand cmd)
         {
             OpenConnection();
@@ -139,7 +139,7 @@ namespace CT.DL
         /// <typeparam name="T"></typeparam>
         /// <param name="id"></param>
         /// <returns></returns>
-        /// pkha 07.07.2023
+        /// phamkhanhhand 07.07.2023
         public T GetByID<T>(object id)
         {
             T result = default(T);
@@ -219,7 +219,7 @@ namespace CT.DL
         /// <typeparam name="T"></typeparam>
         /// <param name="id"></param>
         /// <returns></returns>
-        /// phamha
+        /// phamkhanhhand
         /// Lấy thông tin theoID
         public T GetByType<T>(SqlCommand cmd)
         {
@@ -256,7 +256,7 @@ namespace CT.DL
         /// <typeparam name="T"></typeparam>
         /// <param name="id"></param>
         /// <returns></returns>
-        /// phamha
+        /// phamkhanhhand
         /// Lấy thông tin theoID
         public object GetByID(Type type, object id)
         {
@@ -317,7 +317,7 @@ namespace CT.DL
         /// <param name="columnName"></param>
         /// <param name="columnValue"></param>
         /// <returns></returns>
-        /// phamha Nov 23, 2024
+        /// phamkhanhhand Nov 23, 2024
         public T GetByColumn<T>(string columnName, object columnValue)
         {
             var type = typeof(T);
@@ -369,7 +369,7 @@ namespace CT.DL
         /// <param name="columnName"></param>
         /// <param name="columnValue"></param>
         /// <returns></returns>
-        /// phamha Nov 23, 2024
+        /// phamkhanhhand Nov 23, 2024
         public List<T> GetListByColumn<T>(string columnName, object columnValue)
         {
             var type = typeof(T);
@@ -421,7 +421,7 @@ namespace CT.DL
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
-        /// phamha
+        /// phamkhanhhand
         public bool Insert(string sql)
         {
             OpenConnection();
@@ -448,7 +448,7 @@ namespace CT.DL
         /// <param name="id"></param>
         /// <returns></returns>
         /// Lấy thông tin theoID
-        /// phamhaok
+        /// phamkhanhhandok
         public bool ExcuteSqlCommand(SqlCommand cmd, string sql)
         {
             OpenConnection();
@@ -471,7 +471,7 @@ namespace CT.DL
         /// <param name="id"></param>
         /// <returns></returns>
         /// Lấy thông tin theoID
-        /// phamhaok
+        /// phamkhanhhandok
         public object ExcuteSqlCommandScalar(SqlCommand cmd, string sql)
         {
             OpenConnection();
@@ -491,7 +491,7 @@ namespace CT.DL
         /// Lấy danh sách column của bảng
         /// </summary>
         /// <returns></returns>
-        /// pkha 23.07.2023
+        /// phamkhanhhand 23.07.2023
         public string[] GetColumnsName(string tableName)
         {
             OpenConnection();
@@ -535,7 +535,7 @@ namespace CT.DL
         /// <param name="id"></param>
         /// <returns></returns>
         /// Lấy thông tin theoID
-        /// pkha 17.04.2023
+        /// phamkhanhhand 17.04.2023
         public List<object> SelectList(Type type, SqlCommand cmd)
         {
             OpenConnection();
@@ -572,7 +572,7 @@ namespace CT.DL
         /// <param name="id"></param>
         /// <returns></returns>
         /// Lấy thông tin theoID
-        /// phamha
+        /// phamkhanhhand
         public List<T> SelectList<T>(SqlCommand cmd)
         {
             OpenConnection();
@@ -608,8 +608,8 @@ namespace CT.DL
         /// <typeparam name="T"></typeparam>
         /// <param name="id"></param>
         /// <returns></returns>
-        /// pkha 05.07.2023
-        public List<T> SelectListWithTotal<T>(SqlCommand cmd, out int totalResultRecord, string totalColumnName = "pkha_totalPaging")
+        /// phamkhanhhand 05.07.2023
+        public List<T> SelectListWithTotal<T>(SqlCommand cmd, out int totalResultRecord, string totalColumnName = "phamkhanhhand_totalPaging")
         {
             totalResultRecord = 0;
 
@@ -657,7 +657,7 @@ namespace CT.DL
         /// <typeparam name="T"></typeparam>
         /// <param name="dt"></param>
         /// <returns></returns>
-        /// phamha
+        /// phamkhanhhand
         private static List<T> ConvertDataTableToList<T>(DataTable dt)
         {
             List<T> data = new List<T>();
@@ -703,7 +703,7 @@ namespace CT.DL
         /// <typeparam name="T"></typeparam>
         /// <param name="dt"></param>
         /// <returns></returns>
-        /// phamha
+        /// phamkhanhhand
         private static List<object> ConvertDataTableToList(Type type, DataTable dt)
         {
             List<object> data = new List<object>();

@@ -18,7 +18,7 @@ namespace CT.DL
         /// </summary>
         /// <param name="userName"></param>
         /// <returns></returns>
-        /// phamha Nov 17, 2024
+        /// phamkhanhhand Nov 17, 2024
         public adm_Employee GetEmployeeByUsername(string userName)
         {
 

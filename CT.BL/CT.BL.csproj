@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CT.DL\CT.DL.csproj" />
+    <ProjectReference Include="..\CT.Models\CT.Models.csproj" />
+    <ProjectReference Include="..\CT.UserContext\CT.UserContext.csproj" />
+  </ItemGroup>
+
 </Project>

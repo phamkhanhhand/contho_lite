@@ -7,7 +7,7 @@ using Microsoft.Extensions.Caching.Memory;
 using System.Security.Claims;
 
 
-namespace CT.CurrentContext
+namespace CT.UserContext.CurrentContext
 {
     public static class CurrentUserService
     {

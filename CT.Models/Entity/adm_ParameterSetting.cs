@@ -9,7 +9,7 @@ namespace CT.Models.Entity
     /// <summary>
     /// Bảng lương
     /// </summary>
-    /// phamha 14.04.2023
+    /// phamkhanhhand 14.04.2023
     [EntityKey("ParameterSettingID", "adm_ParameterSetting_seq")]
     [DatabaseViewName("adm_ParameterSetting")]
     public class adm_ParameterSetting : BaseEntity

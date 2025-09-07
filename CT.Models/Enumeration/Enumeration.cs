@@ -48,7 +48,7 @@ namespace CT.Models.Enumeration
     /// <summary>
     /// Trạng thái data do api trả về
     /// </summary>
-    /// phamha Dec 29, 2024
+    /// phamkhanhhand Dec 29, 2024
     public enum FilterOperator
     {
         Equal = 1,              // Giống (==)

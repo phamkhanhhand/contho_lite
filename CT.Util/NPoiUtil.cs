@@ -23,7 +23,7 @@ namespace CT.Utils
     /// Npoi util
     /// Thêm các hàm extend cho ISheet npoi cho nó mạnh
     /// </summary>
-    /// pkha 23.06.2023
+    /// phamkhanhhand 23.06.2023
     public static partial class NPoiUtil
     {
 

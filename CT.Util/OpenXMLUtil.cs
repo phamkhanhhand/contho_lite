@@ -25,7 +25,7 @@ namespace CT.Utils
     /// DocumentFormat.OpenXml util  
     /// Thêm các hàm extend cho WordprocessingDocument npoi cho nó mạnh
     /// </summary>
-    /// pkha 23.06.2023
+    /// phamkhanhhand 23.06.2023
     public static partial class OpenXMLUtil
     {
         // Thay thế giá trị của bookmark trong file Word

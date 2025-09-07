@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CT.CurrentContext
+namespace CT.UserContext.CurrentContext
 {
     public class EmployeeDL
     {
@@ -18,7 +18,7 @@ namespace CT.CurrentContext
         /// </summary>
         /// <param name="userName"></param>
         /// <returns></returns>
-        /// phamha Nov 17, 2024
+        /// phamkhanhhand Nov 17, 2024
         public adm_Employee GetEmployeeByUsername(string userName)
         {
 

@@ -35,7 +35,7 @@ namespace CT.Models.Entity
         /// <summary>
         /// Version (DB sql server là TIMESTAMP); không phải thời gian
         /// </summary>
-        /// phamha Dec 29, 2024
+        /// phamkhanhhand Dec 29, 2024
         public byte[]? EditVersion { get; set; }
 
     }

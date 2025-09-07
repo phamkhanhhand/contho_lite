@@ -9,7 +9,7 @@ namespace CT.Models.Entity
     /// <summary>
     /// Employee
     /// </summary>
-    /// phamha 14.04.2023
+    /// phamkhanhhand 14.04.2023
     [EntityKey("EmployeeID", "adm_Employee_seq")]
     [DatabaseViewName("adm_Employee")]
     public class adm_Employee : BaseEntity

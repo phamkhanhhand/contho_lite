@@ -9,7 +9,7 @@ namespace CT.Models.Entity
     /// <summary>
     /// Bảng lương
     /// </summary>
-    /// phamha 14.04.2023
+    /// phamkhanhhand 14.04.2023
     [EntityKey("AttachmentID", "cm_Attachment_seq")]
     public class cm_Attachment : BaseEntity
     {
@@ -17,7 +17,7 @@ namespace CT.Models.Entity
         /// <summary>
         /// ID
         /// </summary>
-        /// phamha Dec 25,2024
+        /// phamkhanhhand Dec 25,2024
         public int AttachmentID { get; set; }
          
         public string FileName { get; set; }

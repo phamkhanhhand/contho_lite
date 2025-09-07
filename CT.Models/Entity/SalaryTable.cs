@@ -9,7 +9,7 @@ namespace CT.Models.Entity
     /// <summary>
     /// Bảng lương
     /// </summary>
-    /// phamha 14.04.2023
+    /// phamkhanhhand 14.04.2023
     public class SalaryTable : BaseEntity
     {
 
