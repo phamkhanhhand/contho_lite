@@ -1,6 +1,6 @@
 ﻿
 
-.kh-textbox input {
+.ct-textbox input {
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -8,6 +8,6 @@
     width: 100%;
 }
 
-    .kh-textbox input[type="number"], input[type="date"], input[type="text"], input[type="email"] {
+    .ct-textbox input[type="number"], input[type="date"], input[type="text"], input[type="email"] {
         font-size: 14px;
     }

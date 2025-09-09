@@ -3,7 +3,7 @@
  * phamha
  * */
 
-class KHDetailForm extends KHBaseForm {
+class CTDetailForm extends CTBaseForm {
     /*
      * Tên entity
      * */

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace KH.ITFamily.FileCenter
+namespace CT.Pages.Shared
 {
-    public class KHBasePageModel : PageModel
+    public class CTBasePageModel : PageModel
     {
-        protected Dictionary<string, string> lstRef = new Dictionary<string, string>(); 
+        protected Dictionary<string, string> lstRef = new Dictionary<string, string>();
         public string GetRefID(string key)
         {
             var rs = "";

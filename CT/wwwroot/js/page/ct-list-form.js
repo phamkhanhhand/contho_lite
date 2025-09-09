@@ -1,0 +1,3 @@
+﻿class CTListForm extends CTBaseForm {
+     
+}

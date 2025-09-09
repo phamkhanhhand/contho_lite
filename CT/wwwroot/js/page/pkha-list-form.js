@@ -1,3 +1,0 @@
-﻿class KHListForm extends KHBaseForm {
-     
-}

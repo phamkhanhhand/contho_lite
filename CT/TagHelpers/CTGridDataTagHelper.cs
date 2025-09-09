@@ -4,11 +4,11 @@ using System.Data;
 using System.Data.Common;
 using System.Reflection.Emit;
 
-namespace KH.ITFamily.FileCenter.Base.KHControl
+namespace CT.TagHelpers
 {
     // You may need to install the Microsoft.AspNetCore.Razor.Runtime package into your project
-    [HtmlTargetElement("kh-grid-data")]
-    public class KHGridDataTagHelper : KHBaseTagHelper
+    [HtmlTargetElement("ct-grid-data")]
+    public class CTGridDataTagHelper : CTBaseTagHelper
     {
         // Các thuộc tính cần thiết cho input
 
@@ -46,7 +46,7 @@ namespace KH.ITFamily.FileCenter.Base.KHControl
         //    }
         //}
 
-        public KHMenuToolTagHelper MenuTool { get; set; }
+        public CTMenuToolTagHelper MenuTool { get; set; }
 
 
 
@@ -75,10 +75,10 @@ namespace KH.ITFamily.FileCenter.Base.KHControl
         private void AddScriptAndCss(TagHelperOutput output)
         {
             // Thêm CSS cho input (ví dụ: dùng thư viện CSS như Bootstrap)
-            output.PostElement.AppendHtml("<link rel='stylesheet' href='/css/kh-textbox.css' />");
+            output.PostElement.AppendHtml("<link rel='stylesheet' href='/css/ct-textbox.css' />");
 
             // Thêm script (ví dụ: validate input số, ngày tháng)
-            output.PostElement.AppendHtml("<script src='/js/control/kh-textbox.js'></script>");
+            output.PostElement.AppendHtml("<script src='/js/control/ct-textbox.js'></script>");
         }
         //public override void Process(TagHelperContext context, TagHelperOutput output)
         //{

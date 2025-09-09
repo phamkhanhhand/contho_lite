@@ -3,7 +3,7 @@
  * phamha
  * */
 
-class KHBaseForm {
+class CTBaseForm {
 
 
     //ID page

@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Razor.Runtime.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace KH.ITFamily.FileCenter.Base.KHControl
+namespace CT.TagHelpers
 {
 
-    [HtmlTargetElement("kh-button")]
-    public class KHButtonTagHelper : KHBaseTagHelper
+    [HtmlTargetElement("ct-button")]
+    public class CTButtonTagHelper : CTBaseTagHelper
     {
         // Thuộc tính "Text" để hiển thị văn bản trên nút
         public string Text { get; set; }
@@ -96,10 +96,10 @@ namespace KH.ITFamily.FileCenter.Base.KHControl
         private void AddScriptAndCss(TagHelperOutput output)
         {
             // Thêm CSS cho input (ví dụ: dùng thư viện CSS như Bootstrap)
-            output.PostElement.AppendHtml("<link rel='stylesheet' href='/css/kh-button.css' />");
+            output.PostElement.AppendHtml("<link rel='stylesheet' href='/css/ct-button.css' />");
 
             // Thêm script (ví dụ: validate input số, ngày tháng)
-            output.PostElement.AppendHtml("<script src='/js/control/kh-button.js'></script>");
+            output.PostElement.AppendHtml("<script src='/js/control/ct-button.js'></script>");
         }
     }
 

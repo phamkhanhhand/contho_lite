@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Razor.Runtime.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers; 
 
-namespace KH.ITFamily.FileCenter.Base.KHControl
+namespace CT.TagHelpers
 {
 
-    //[HtmlTargetElement("kh-base")]
-    public class KHBaseTagHelper : TagHelper
+    //[HtmlTargetElement("ct-base")]
+    public class CTBaseTagHelper : TagHelper
     {
         /// <summary>
         /// ID ở dưới client

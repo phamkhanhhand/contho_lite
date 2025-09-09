@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Razor.Runtime.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Reflection.Emit;
 
-namespace KH.ITFamily.FileCenter.Base.KHControl
+namespace CT.TagHelpers
 {
     // You may need to install the Microsoft.AspNetCore.Razor.Runtime package into your project
-    [HtmlTargetElement("kh-menu-tool")]
-    public class KHMenuToolTagHelper : KHBaseTagHelper
+    [HtmlTargetElement("ct-menu-tool")]
+    public class CTMenuToolTagHelper : CTBaseTagHelper
     {
         // Các thuộc tính cần thiết cho input
 
@@ -86,10 +86,10 @@ namespace KH.ITFamily.FileCenter.Base.KHControl
         private void AddScriptAndCss(TagHelperOutput output)
         {
             // Thêm CSS cho input (ví dụ: dùng thư viện CSS như Bootstrap)
-            output.PostElement.AppendHtml("<link rel='stylesheet' href='/css/kh-menu-tool.css' />");
+            output.PostElement.AppendHtml("<link rel='stylesheet' href='/css/ct-menu-tool.css' />");
 
             // Thêm script (ví dụ: validate input số, ngày tháng)
-            output.PostElement.AppendHtml("<script src='/js/control/kh-menu-tool.js'></script>");
+            output.PostElement.AppendHtml("<script src='/js/control/ct-menu-tool.js'></script>");
         }
         //public override void Process(TagHelperContext context, TagHelperOutput output)
         //{
