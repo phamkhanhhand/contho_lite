@@ -1,0 +1,60 @@
+﻿/*toolbar*/
+.mb-grid-tool-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-bottom: 1px solid lightblue;
+    background-color: lightgray;
+    height: 30px;
+}
+
+.mb-grid-tool-bar li {
+    float: right;
+    margin-right: 1px;
+    margin-left: 4px;
+}
+
+    .mb-grid-tool-bar li a, .mb-grid-tool-bar .button {
+        border: none;
+        color: white;
+        padding: 2px 12px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 0px;
+        cursor: pointer;
+        background-color: cadetblue;
+        background-color: #1aa4c8;
+    }
+
+        .mb-grid-tool-bar li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+.mb-grid-tool-bar .active {
+    background-color: orange;
+    border-radius: 5px;
+}
+
+
+.mb-grid-tool-bar li:active {
+    background-color: orange !important;
+}
+
+.mb-grid-tool-bar li a:active, .mb-grid-tool-bar .button:active {
+    background-color: orange!important;
+}
+
+
+
+.mb-grid-tool-bar .search-container input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none; 
+    padding: 2px 12px; 
+    font-size: 16px;
+    margin: 4px 0px; 
+} 
