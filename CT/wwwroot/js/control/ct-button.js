@@ -3,6 +3,6 @@
 /*
  * Grid
  * */
-class KHButton extends KHBaseControl {
+class KHButton extends CTBaseControl {
     
 }

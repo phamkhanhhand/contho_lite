@@ -37,6 +37,7 @@ namespace CT.TagHelpers
             base.Process(context, output);
 
             output.TagName = "div";  // Sử dụng thẻ div cho phần wrapper
+            output.TagMode = TagMode.StartTagAndEndTag;
             output.Attributes.SetAttribute("class", "ct-textbox " + CssClass);  // Tùy chỉnh class của div
 
             // Đảm bảo có id cho thẻ input nếu không có

@@ -1,7 +1,7 @@
 ﻿/*
  * Grid
  * */
-class KHMenuTool extends KHBaseControl {
+class KHMenuTool extends CTBaseControl {
      //Thêm sự kiện cho nó
     lstMenuItem = [];
 

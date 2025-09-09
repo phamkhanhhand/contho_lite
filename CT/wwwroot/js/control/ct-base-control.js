@@ -3,7 +3,7 @@
   * phamha Nov 24, 2024
   * */
 
-class KHBaseControl {
+class CTBaseControl {
 
     constructor(id) {
         if (id) {
