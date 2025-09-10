@@ -30,7 +30,7 @@ class FitScreen {
     /*
      * Hàm đặt số px trên màn hình hiển thị cho layout
      * Chú ý trong hàm này height là bao gồm cả border, margin, padding
-     * phamha 25.10.2022
+     * phamkhanhhand 25.10.2022
      * */
     fitControl(mapperObject) {
         var me = this;

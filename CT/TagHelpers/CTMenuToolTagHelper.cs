@@ -102,7 +102,7 @@ namespace CT.TagHelpers
         /// Tạo đối tượng javascript
         /// </summary>
         /// <returns></returns>
-        /// phamha
+        /// phamkhanhhand
         private string GetListColumnJavaScriptObject()
         {
             var lstDataIndex = this.Items;

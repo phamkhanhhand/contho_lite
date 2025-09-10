@@ -22,7 +22,7 @@ PKHA.commonFn = {
     //#region ajax
     /*
      * Ajax
-     * phamha
+     * phamkhanhhand
      * */
     ajax(url, params, callbackFunction, cfg = { method: "", isSync: true }) {
 
@@ -51,7 +51,7 @@ PKHA.commonFn = {
 
     /*
      * Ajax lấy dữ liệu để bind control, sau đó là bind data
-     * phamha
+     * phamkhanhhand
      * */
     getAndBindControl(url, callbackFunction, entity = {}, isSync = true) {
 
@@ -75,7 +75,7 @@ PKHA.commonFn = {
 
     /*
      * Show mask container truyền vào
-     * phamha
+     * phamkhanhhand
      * */
     showMask(container) {
 
@@ -87,7 +87,7 @@ PKHA.commonFn = {
 
     /*
      * Xóa mask trong container truyền vào
-     * phamha
+     * phamkhanhhand
      * */
     hideMask(container) {
         if (container && container[0]) {
@@ -98,7 +98,7 @@ PKHA.commonFn = {
 
     /*
      * Xóa mask trong container truyền vào
-     * phamha
+     * phamkhanhhand
      * */
     showUC(container, cfg) {
         var key = cfg.key,
@@ -126,7 +126,7 @@ PKHA.commonFn = {
 
     /*
      * Xóa mask trong container truyền vào
-     * phamha
+     * phamkhanhhand
      * */
     showUCHTML(container, cfg) {
         var key = cfg.key,
@@ -207,7 +207,7 @@ PKHA.commonFn = {
     /*
      * Gen Guid
      * TODO cái này phải xem lại
-     * phamha
+     * phamkhanhhand
      * */
     uuidv4() {
         return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>

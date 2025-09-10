@@ -121,7 +121,7 @@ namespace CT.TagHelpers
         /// <summary>
         /// Trường để gán dữ liệu vào giao diện
         /// </summary>
-        /// phamha
+        /// phamkhanhhand
         [Bindable(true)]
         [Category("Appearance")]
         [DefaultValue("")]
@@ -132,7 +132,7 @@ namespace CT.TagHelpers
         /// <summary>
         /// Trường để gán dữ liệu vào giao diện
         /// </summary>
-        /// phamha
+        /// phamkhanhhand
         [Bindable(true)]
         [Category("Appearance")]
         [DefaultValue("")]

@@ -12,7 +12,7 @@ namespace CT.Common
     /// <summary>
     /// Cache dùng chung cho toàn bộ dự án, load 5 phút 1 lần
     /// </summary>
-    /// phamha Dec 30, 2024
+    /// phamkhanhhand Dec 30, 2024
     public class GlobalCache
     {
 

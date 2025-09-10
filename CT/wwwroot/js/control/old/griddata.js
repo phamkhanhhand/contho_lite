@@ -272,8 +272,8 @@ class GridData extends BaseControl {
      
     /*
      * Danh sách cột
-     * phamha
-     * phamha
+     * phamkhanhhand
+     * phamkhanhhand
      * */
     getListColumnVisibl() {
         var me = this;
@@ -293,7 +293,7 @@ class GridData extends BaseControl {
 
     /*
      * Load data from serrver
-     * phamha
+     * phamkhanhhand
      * */
     getDataFromServer(callbackFunct) {
         var me = this,
@@ -398,7 +398,7 @@ class GridData extends BaseControl {
 
     /*
      * Cho sửa hay không
-     * phamha
+     * phamkhanhhand
      * */
     setEnable(enable) {
         let me = this;
@@ -408,7 +408,7 @@ class GridData extends BaseControl {
 
     /*
      * Sau khi gán data vào xong
-     * phamha
+     * phamkhanhhand
      * */
     bindComplete() {
         var me = this,
@@ -559,7 +559,7 @@ class GridData extends BaseControl {
 
 /*
  * Cột (để sử dụng các tính năng của cột)
- * phamha
+ * phamkhanhhand
  * */
 class Column {
 
@@ -591,7 +591,7 @@ class Column {
 
 /*
  * Cột (để sử dụng các tính năng của cột)
- * phamha
+ * phamkhanhhand
  * */
 class DateTimeColumn extends Column {
     render(value) {

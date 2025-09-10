@@ -22,7 +22,7 @@ class TabPanel extends BaseControl {
 
     /*
      * Sự kiện nhấn vào tab
-     * phamha
+     * phamkhanhhand
      * */
     onTabClick(evt) {
         var i, tabcontent, tablinks;

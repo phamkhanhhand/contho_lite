@@ -1,6 +1,6 @@
 ﻿/*
  * Màn hình dạng master-nhiều detail
- * phamha
+ * phamkhanhhand
  * */
 
 class CTDetailForm extends CTBaseForm {
@@ -23,7 +23,7 @@ class CTDetailForm extends CTBaseForm {
 
     /*
      * Sự kiện nút back
-     * phamha
+     * phamkhanhhand
      * */
     back_Onclick() {
         let me = this;
@@ -41,7 +41,7 @@ class CTDetailForm extends CTBaseForm {
 
     /*
      * Gán control từ giao diện vào js
-     * phamha
+     * phamkhanhhand
      * */
     loadForm() {
         let me = this;
@@ -79,7 +79,7 @@ class CTDetailForm extends CTBaseForm {
 
     /*
      * Lấy dữ liệu của màn hình
-     * phamha
+     * phamkhanhhand
      * */
     getBussinessData() {
         let me = this,
@@ -101,7 +101,7 @@ class CTDetailForm extends CTBaseForm {
     /*
      * Gán dữ liệu vào control 
      * Sau đó nhờ sự kiện sẽ bind dữ liệu vào control
-     * phamha
+     * phamkhanhhand
      * */
     initMenu() {
         let me = this;
@@ -118,7 +118,7 @@ class CTDetailForm extends CTBaseForm {
 
     /*
      * Sự kiện nhấn nút click vào menu
-     * phamha
+     * phamkhanhhand
      * */
     onToolbarItem_Click(arg) {
         var me = this,
@@ -150,8 +150,7 @@ class CTDetailForm extends CTBaseForm {
 
     /*
      * Bind dữ liệu vào màn hình
-     * phamha
-     * phamha
+     * phamkhanhhand
      * */
     bindData() {
         var me = this;
@@ -170,7 +169,7 @@ class CTDetailForm extends CTBaseForm {
 
     /*
      * Bind masterdata vào màn hình
-     * phamha
+     * phamkhanhhand
      * */
     bindMaster() {
         var me = this,
@@ -194,7 +193,7 @@ class CTDetailForm extends CTBaseForm {
 
     /*
      * Bind masterdata vào màn hình
-     * phamha
+     * phamkhanhhand
      * */
     bindDetails() {
         var me = this;
@@ -204,7 +203,7 @@ class CTDetailForm extends CTBaseForm {
     /*
      * Gán dữ liệu vào control 
      * Sau đó nhờ sự kiện sẽ bind dữ liệu vào control
-     * phamha
+     * phamkhanhhand
      * */
     bindControls() {
         var me = this;
@@ -232,7 +231,7 @@ class CTDetailForm extends CTBaseForm {
 
     /*
      * Lưu dữ liệu từ form vào db
-     * phamha
+     * phamkhanhhand
      * */
     save() {
         let me = this;
@@ -258,7 +257,7 @@ class CTDetailForm extends CTBaseForm {
     /*
      * Validate
      * trả về: true: pass; false: fail
-     * phamha
+     * phamkhanhhand
      * */
     validateBeforeSave(data) {
         let me = this,
@@ -269,7 +268,7 @@ class CTDetailForm extends CTBaseForm {
 
     /*
      * Xử lý sau khi lưu dữ liệu
-     * phamha
+     * phamkhanhhand
      * */
     saveComplete(data) {
         let me = this;
@@ -311,7 +310,7 @@ class CTDetailForm extends CTBaseForm {
 
     /*
      * Lấy dữ liệu từ form
-     * phamha
+     * phamkhanhhand
      * */
     getEntitySetFromGuid() {
         let me = this;
@@ -330,7 +329,7 @@ class CTDetailForm extends CTBaseForm {
 
     /*
      * Lấy dữ liệu master form
-     * phamha
+     * phamkhanhhand
      * */
     getMasterFromGuid() {
         let me = this,
@@ -367,7 +366,7 @@ class CTDetailForm extends CTBaseForm {
     /*
      * Lấy dữ liệu master form
      * Cái này tùy màn hình mà override
-     * phamha
+     * phamkhanhhand
      * */
     getDetailsFromGuid() {
         let me = this,

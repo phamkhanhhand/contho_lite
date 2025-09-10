@@ -1,6 +1,6 @@
 ﻿/*
  * Lớp gán Fit screen
- * phamha
+ * phamkhanhhand
  * */
 class FitScreen {
     objectMap = null
@@ -78,7 +78,7 @@ class FitScreen {
              
         }
 
-        //phamha
+        //phamkhanhhand
         //Quy đổi root (tạm để lại)
         //Quy đổi phần trăm ra số
         //Quy đổi Bổ sung cái nào còn thiếu thì lấy luôn trên thẻ
@@ -258,7 +258,7 @@ class FitScreen {
 
 /*
  * Đổi id để nhỡ ra nó có gọi lại ở nhiều màn hình thì không chớt
- * phamha
+ * phamkhanhhand
  * */
 function changeUIID() {
     var idx = "_" + PKHA.commonFn.uuidv4();

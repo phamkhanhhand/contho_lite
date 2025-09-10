@@ -1,6 +1,6 @@
 ﻿ /*
   * Tạo base control
-  * phamha Nov 24, 2024
+  * phamkhanhhand Nov 24, 2024
   * */
 
 class CTBaseControl {

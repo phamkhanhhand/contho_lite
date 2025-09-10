@@ -1,6 +1,6 @@
 ﻿/*
  * Màn hình dạng master-nhiều detail
- * phamha
+ * phamkhanhhand
  * */
 
 class CTBaseForm {
@@ -20,7 +20,7 @@ class CTBaseForm {
 
     /*
      * Gán control từ giao diện vào js
-     * phamha
+     * phamkhanhhand
      * */
     configControls(mapping) {
         let me = this;
@@ -65,7 +65,7 @@ class CTBaseForm {
 
     /*
      * Đặt editmode cho form
-     * phamha
+     * phamkhanhhand
      * */
     setEditMode(editmode) {
         let me = this;
@@ -86,7 +86,7 @@ class CTBaseForm {
 
     /*
      * Đặt enable/disable control cho toàn màn hình
-     * phamha
+     * phamkhanhhand
      * */
     setEnableControl(enable) {
         let me = this;
@@ -110,7 +110,7 @@ class CTBaseForm {
 
     /*
      * Bind masterdata vào màn hình
-     * phamha
+     * phamkhanhhand
      * */
     bindMaster(entity, bindingField ="khsetfield") {
         var me = this;

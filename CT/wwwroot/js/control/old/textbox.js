@@ -15,7 +15,7 @@ class TextBox extends BaseControl {
 
     /*
      * đặt enable/disable
-     * phamha
+     * phamkhanhhand
      * */
     setEnable(enable) {
         var me = this;
