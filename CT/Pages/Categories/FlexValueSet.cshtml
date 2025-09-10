@@ -1,0 +1,34 @@
+﻿@page
+@model CT.Pages.Categories.FlexValueSetModel
+@{
+
+    ViewData["Title"] = "Quản lý danh mục";
+} 
+
+
+
+<ct-textbox 
+htmlID='@Model.GetRefID("txt1")'
+KHSetField="maxValue" 
+Label="Kích thước tối đa">
+</ct-textbox>
+
+
+
+<script>
+    var thisPage = null;
+
+    document.addEventListener('DOMContentLoaded', function () {
+         
+        thisPage = new CTBaseForm();
+         
+        thisPage.configControls(
+            [
+                { btnADD: '@Model.GetRefID("txt1")' } 
+            ]
+
+        );
+         
+    });
+     
+</script>

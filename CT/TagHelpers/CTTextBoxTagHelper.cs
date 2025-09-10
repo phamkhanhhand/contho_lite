@@ -7,7 +7,7 @@ namespace CT.TagHelpers
 {
     // You may need to install the Microsoft.AspNetCore.Razor.Runtime package into your project
     [HtmlTargetElement("ct-textbox")]
-    public class KHTextboxTagHelper : CTBaseTagHelper
+    public class CTTextboxTagHelper : CTBaseTagHelper
     {
         // Các thuộc tính cần thiết cho input
 
@@ -88,7 +88,7 @@ namespace CT.TagHelpers
     }
 
  
-    let temp = new KHTextBox(" + htmlIDStr + @");
+    let temp = new CTTextBox(" + htmlIDStr + @");
     App[" + htmlIDStr + @"] = temp;
   
 
@@ -109,7 +109,7 @@ namespace CT.TagHelpers
             output.PostElement.AppendHtml("<link rel='stylesheet' href='/css/ct-textbox.css' />");
 
             // Thêm script (ví dụ: validate input số, ngày tháng)
-            output.PostElement.AppendHtml("<script src='/js/control/ct-textbox.js'></script>");
+            //output.PostElement.AppendHtml("<script src='/js/control/ct-textbox.js'></script>");
         }
         //public override void Process(TagHelperContext context, TagHelperOutput output)
         //{

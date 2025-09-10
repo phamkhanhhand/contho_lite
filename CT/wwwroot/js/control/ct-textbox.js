@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-class KHTextBox extends CTBaseControl {
+class CTTextBox extends CTBaseControl {
 
 
 }
