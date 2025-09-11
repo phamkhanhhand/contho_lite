@@ -57,6 +57,9 @@ class CTBaseForm {
     afterBindingComplete() {
 
     }
+    loadData() {
+
+    }
 
     refresh() {
         let me = this;

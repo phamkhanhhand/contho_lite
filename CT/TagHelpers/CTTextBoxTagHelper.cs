@@ -80,20 +80,14 @@ namespace CT.TagHelpers
 
             string mapping = @"
 <script>
-
  
-
     if (typeof App == 'undefined') {
     App = [];
     }
-
  
     let temp = new CTTextBox(" + htmlIDStr + @");
     App[" + htmlIDStr + @"] = temp;
-  
-
-
-
+   
 </script> ";
 
             output.PostElement.AppendHtml(mapping);

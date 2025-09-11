@@ -11,30 +11,28 @@ namespace CT.TagHelpers
     {
         // Các thuộc tính cần thiết cho input
 
-         
-         
         [HtmlAttributeName("Text")]
         public string Text { get; set; }  // Text của label
 
         [HtmlAttributeName("Items")]
-        public List<KHMenuItem> Items { get; set; }
+        public List<CTMenuItem> Items { get; set; }
 
-         
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             base.Process(context, output);
-              
-            var content = @"    <div class='mb-grid-tool-bar' id='" + this.htmlID + @"'>
-        <ul>
-            <li style='float: left;'>
-                <span class='search-container'>
-                    <input type='text' placeholder='Tìm kiếm..' name='search'>
-                    <button type='submit' class='button'>Tìm</button>
-                </span></li>
-                {0}
-        </ul>
-    </div>";
+
+            var content = @"  
+            <div class='mb-grid-tool-bar' id='" + this.htmlID + @"'>
+                <ul>
+                    <li style='float: left;'>
+                        <span class='search-container'>
+                            <input type='text' placeholder='Tìm kiếm..' name='search'>
+                            <button type='submit' class='button'>Tìm</button>
+                        </span></li>
+                        {0}
+                </ul>
+            </div>";
 
             var menu = "";
 
@@ -47,8 +45,6 @@ namespace CT.TagHelpers
             }
 
             content = string.Format(content, menu);
-
-             
 
             output.Content.AppendHtml(content);
 
@@ -75,7 +71,7 @@ namespace CT.TagHelpers
 
 </script>
 ";
-             
+
             output.PostElement.AppendHtml(mapping);
 
 
@@ -131,8 +127,8 @@ Text:'" + col.Text + @"'
 
 
 
-    [HtmlTargetElement("kh-menu-item")]
-    public class KHMenuItem
+    [HtmlTargetElement("ct-menu-item")]
+    public class CTMenuItem
     {
         protected string _mbClientID = "id_" + Guid.NewGuid();
 

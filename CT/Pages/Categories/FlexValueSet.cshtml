@@ -1,11 +1,23 @@
 ﻿@page
-@model CT.Pages.Categories.FlexValueSetModel
+@model CT.Pages.Categories.FlexValueSetModel 
 @{
 
     ViewData["Title"] = "Quản lý danh mục";
 } 
 
+@{
+    // Sample menu items
+    var menuItems = new List<CTMenuItem>
+    {
+        new CTMenuItem { Text = "Home", Command = "/" },
+        new CTMenuItem { Text = "About", Command = "/about" },
+        new CTMenuItem { Text = "Contact", Command = "/contact" }
+    };
+}
 
+
+<ct-menu-tool Items="menuItems">
+</ct-menu-tool>
 
 <ct-textbox 
 htmlID='@Model.GetRefID("txt1")'
@@ -16,13 +28,13 @@ Label="Kích thước tối đa">
 
 
 <script>
-    var thisPage = null;
+    var flexValueSetPage = null;
 
     document.addEventListener('DOMContentLoaded', function () {
          
-        thisPage = new CTBaseForm();
+        flexValueSetPage = new CTListForm();
          
-        thisPage.configControls(
+        flexValueSetPage.configControls(
             [
                 { btnADD: '@Model.GetRefID("txt1")' } 
             ]
