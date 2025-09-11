@@ -1,5 +1,5 @@
 ﻿/*toolbar*/
-.mb-grid-tool-bar ul {
+.ct-grid-tool-bar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -9,13 +9,13 @@
     height: 30px;
 }
 
-.mb-grid-tool-bar li {
+.ct-grid-tool-bar li {
     float: right;
     margin-right: 1px;
     margin-left: 4px;
 }
 
-    .mb-grid-tool-bar li a, .mb-grid-tool-bar .button {
+    .ct-grid-tool-bar li a, .ct-grid-tool-bar .button {
         border: none;
         color: white;
         padding: 2px 12px;
@@ -29,27 +29,27 @@
         background-color: #1aa4c8;
     }
 
-        .mb-grid-tool-bar li a:hover:not(.active) {
+        .ct-grid-tool-bar li a:hover:not(.active) {
             background-color: #111;
         }
 
-.mb-grid-tool-bar .active {
+.ct-grid-tool-bar .active {
     background-color: orange;
     border-radius: 5px;
 }
 
 
-.mb-grid-tool-bar li:active {
+.ct-grid-tool-bar li:active {
     background-color: orange !important;
 }
 
-.mb-grid-tool-bar li a:active, .mb-grid-tool-bar .button:active {
+.ct-grid-tool-bar li a:active, .ct-grid-tool-bar .button:active {
     background-color: orange!important;
 }
 
 
 
-.mb-grid-tool-bar .search-container input[type=text] {
+.ct-grid-tool-bar .search-container input[type=text] {
     padding: 6px;
     margin-top: 8px;
     font-size: 17px;

@@ -109,7 +109,7 @@ class CTDetailForm extends CTBaseForm {
 
         //thêm scrope vào cho nó
 
-        $("#" + me.toolBar.htmlID + ".mb-grid-tool-bar li").click(function (event) {
+        $("#" + me.toolBar.htmlID + ".ct-grid-tool-bar li").click(function (event) {
             me.onToolbarItem_Click(event);
         });
 
@@ -155,13 +155,13 @@ class CTDetailForm extends CTBaseForm {
     bindData() {
         var me = this;
 
-        PKHA.commonFn.showMask($('.mb-content'));
+        PKHA.commonFn.showMask($('.ct-content'));
         me.bindMaster();
         me.bindDetails();
 
         setTimeout(function () {
             //do what you need here
-            PKHA.commonFn.hideMask($('.mb-content'));
+            PKHA.commonFn.hideMask($('.ct-content'));
         }, 500);
 
 
@@ -208,10 +208,10 @@ class CTDetailForm extends CTBaseForm {
     bindControls() {
         var me = this;
 
-        var controls = $('.mb-combobox'); //todo có 1 trường đánh dấu có load theo base hay không
+        var controls = $('.ct-combobox'); //todo có 1 trường đánh dấu có load theo base hay không
 
         //Thử custom sự kiện
-        //$('.mb-combobox')[0].onCompleteBinding = function myfunction() {
+        //$('.ct-combobox')[0].onCompleteBinding = function myfunction() {
         //    alert('hhhhhh');
         //}
 
