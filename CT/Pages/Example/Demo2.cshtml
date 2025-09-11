@@ -1,5 +1,5 @@
 ﻿@page
-@model CT.Pages.Categories.Demo2Model
+@model CT.Pages.Demo.Demo2Model
 @{
     ViewData["Title"] = "Quản lý danh mục";
     ViewData["ct-page"] = "Demo2";
@@ -25,7 +25,7 @@
 
 <ct-textbox ct-name="txt1"
             htmlID='@Model.GetRefID("txt1")'
-            KHSetField="maxValue"
+            CTSetField="maxValue"
             Label="Kích thước tối đa">
 </ct-textbox>
 

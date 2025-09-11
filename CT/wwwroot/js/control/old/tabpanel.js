@@ -13,7 +13,7 @@ class TabPanel extends BaseControl {
         let me = this;
        
         
-        $("#" + this.htmlID +' .mb-tablinks').on('click', function (event) {
+        $("#" + this.htmlID +' .ct-tablinks').on('click', function (event) {
 
             me.onTabClick(event);
         });
@@ -27,7 +27,7 @@ class TabPanel extends BaseControl {
     onTabClick(evt) {
         var i, tabcontent, tablinks;
          
-        tabcontent = $("#" + this.htmlID + " [mb_link_tab]");
+        tabcontent = $("#" + this.htmlID + " [ct_link_tab]");
 
         //ẩn hết Content
         for (i = 0; i < tabcontent.length; i++) {
@@ -35,17 +35,17 @@ class TabPanel extends BaseControl {
         }
 
         //Nút tab
-        tablinks = $("#" + this.htmlID + " [mb_link_tab_to]");
+        tablinks = $("#" + this.htmlID + " [ct_link_tab_to]");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
 
         //cái nào được nhấn thì cái đó active
-        var targetID = evt.currentTarget.getAttribute('mb_link_tab_to');
+        var targetID = evt.currentTarget.getAttribute('ct_link_tab_to');
 
         if (targetID) {
 
-            $( '#' + this.htmlID + ' [mb_link_tab="' + targetID + '"]')[0].style.display = "block";
+            $( '#' + this.htmlID + ' [ct_link_tab="' + targetID + '"]')[0].style.display = "block";
         }
 
         evt.currentTarget.className += " active";
@@ -56,7 +56,7 @@ class TabPanel extends BaseControl {
             i, tabcontent, tablinks;
 
 
-        tabcontent = $("#" + this.htmlID + " [mb_link_tab]");
+        tabcontent = $("#" + this.htmlID + " [ct_link_tab]");
 
         //ẩn hết Content
         for (i = 0; i < tabcontent.length; i++) {
@@ -64,19 +64,19 @@ class TabPanel extends BaseControl {
         }
 
         //Nút tab
-        tablinks = $("#" + this.htmlID + " [mb_link_tab_to]");
+        tablinks = $("#" + this.htmlID + " [ct_link_tab_to]");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
 
         //cái nào được nhấn thì cái đó active
-        //var targetID = evt.currentTarget.getAttribute('mb_link_tab_to');
-        let tabLinkActive = $('.mb-tab .mb-tablinks')[index];
-        let tabActive = $(tabLinkActive).attr('mb_link_tab_to');
+        //var targetID = evt.currentTarget.getAttribute('ct_link_tab_to');
+        let tabLinkActive = $('.ct-tab .ct-tablinks')[index];
+        let tabActive = $(tabLinkActive).attr('ct_link_tab_to');
 
         if (tabActive) {
 
-            $('#' + this.htmlID + ' [mb_link_tab="' + tabActive + '"]')[0].style.display = "block";
+            $('#' + this.htmlID + ' [ct_link_tab="' + tabActive + '"]')[0].style.display = "block";
         }
 
         $(tabLinkActive).addClass(" active");

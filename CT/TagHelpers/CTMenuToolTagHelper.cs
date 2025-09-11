@@ -23,7 +23,7 @@ namespace CT.TagHelpers
             base.Process(context, output);
 
             var content = @"  
-            <div class='mb-grid-tool-bar' id='" + this.htmlID + @"'>
+            <div class='ct-grid-tool-bar' id='" + this.htmlID + @"'>
                 <ul>
                     <li style='float: left;'>
                         <span class='search-container'>

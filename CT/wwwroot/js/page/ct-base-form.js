@@ -152,7 +152,7 @@ class CTBaseForm {
         let me = this;
 
         //Lần từng cái một, nếu là control thì disable hết đi (control của custom nhé)
-        let allControl = $('.mb-control');
+        let allControl = $('.ct-control');
 
         //foreach để gọi hàm disable của nó (coi kiểu đối tượng)
         for (var i = 0; i < allControl.length; i++) {
@@ -172,7 +172,7 @@ class CTBaseForm {
      * Bind masterdata vào màn hình
      * phamkhanhhand
      * */
-    bindMaster(entity, bindingField ="khsetfield") {
+    bindMaster(entity, bindingField ="ctsetfield") {
         var me = this;
 
         if (entity) {

@@ -28,8 +28,8 @@ namespace CT.TagHelpers
         public string Value { get; set; }  // Giá trị mặc định cho input
         public string CssClass { get; set; }  // Thêm lớp CSS cho input
 
-        [HtmlAttributeName("KHSetField")]
-        public string KHSetField { get; set; }  // Thêm lớp CSS cho input
+        [HtmlAttributeName("CTSetField")]
+        public string CTSetField { get; set; }  // Thêm lớp CSS cho input
 
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
@@ -69,7 +69,7 @@ namespace CT.TagHelpers
             input.Attributes.Add("value", Value ?? "");
             input.Attributes.Add("placeholder", Placeholder ?? "");
             input.Attributes.Add("class", CssClass ?? "ct-textbox-input");
-            input.Attributes.Add("khsetfield", KHSetField);
+            input.Attributes.Add("ctsetfield", CTSetField);
             input.Attributes.Add("id", "ip_" + htmlID);
 
             output.Content.AppendHtml(input);

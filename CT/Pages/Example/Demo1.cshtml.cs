@@ -2,9 +2,9 @@ using CT.Pages.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace CT.Pages.Categories
+namespace CT.Pages.Demo
 {
-    public class Demo2Model : CTBasePageModel
+    public class Demo1Model : CTBasePageModel
     {
         public void OnGet()
         {

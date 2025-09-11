@@ -116,7 +116,7 @@ class CTGridData extends CTBaseControl {
 
     initGrid() {
         var me = this,
-            gridHtml = $("#" + me.htmlID + " .mb-grid-body tbody");
+            gridHtml = $("#" + me.htmlID + " .ct-grid-body tbody");
 
         me.bindToGrid(gridHtml, me.store);
 

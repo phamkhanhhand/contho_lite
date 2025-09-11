@@ -334,7 +334,7 @@ class CTDetailForm extends CTBaseForm {
     getMasterFromGuid() {
         let me = this,
             master = {},
-            controls = $('.mb-control [setfield]');
+            controls = $('.ct-control [setfield]');
 
         for (var i = 0; i < controls.length; i++) {
             var ctr = controls[i];

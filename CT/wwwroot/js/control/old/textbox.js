@@ -38,13 +38,13 @@ class TextBox extends BaseControl {
 
         if (isRequire) {
 
-            $('#' + me.htmlID + '  .mb-control-frame').addClass("mb-err-require");
-            $('#' + me.htmlID + '  .mb-err-require-all').addClass("require-on");
+            $('#' + me.htmlID + '  .ct-control-frame').addClass("ct-err-require");
+            $('#' + me.htmlID + '  .ct-err-require-all').addClass("require-on");
         }
         else {
 
-            $('#' + me.htmlID + '  .mb-control-frame').removeClass("mb-err-require");
-            $('#' + me.htmlID + '  .mb-err-require-all').removeClass("require-on");
+            $('#' + me.htmlID + '  .ct-control-frame').removeClass("ct-err-require");
+            $('#' + me.htmlID + '  .ct-err-require-all').removeClass("require-on");
         }
     }
      
@@ -53,7 +53,7 @@ class TextBox extends BaseControl {
             newValue = (event.target && event.target.value) ? event.target.value : null;
 
         //Check nếu không cho empty
-        if (me.mb_require) {
+        if (me.ct_require) {
 
             let rq = true;
 
