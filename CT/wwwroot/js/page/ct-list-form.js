@@ -1,6 +1,6 @@
 ﻿class CTListForm extends CTBaseForm {
 
-    grid: CTGridData = null;
+    //grid: CTGridData = null;
 
     loadData() {
         let me = this;

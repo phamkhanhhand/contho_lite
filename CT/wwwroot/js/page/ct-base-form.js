@@ -5,10 +5,21 @@
 
 class CTBaseForm {
 
+    pageID
 
-    //ID page
-    constructor() {
+    /*
+    * scope to get component: textbox...
+    */
+    pageScope
+
+    ////ID page
+
+    /*
+    * Truyền arg thôi, chứ nhiều tham số phức tạp, javascript chỉ cho 1 constructor
+    */
+    constructor(arg) {
         this.pageID = PKHA.commonFn.uuidv4();
+        this.pageScope = arg?.pageScope;
 
 
         if (typeof App == 'undefined') {
@@ -16,6 +27,7 @@ class CTBaseForm {
         }
 
         //App[this.pageID] = this;
+
     }
 
     /*
@@ -35,6 +47,51 @@ class CTBaseForm {
         me.afterBindingComplete();
 
     }
+
+
+
+    /*
+    * Auto bind not need map
+    * Tự động bind không cần map
+    * phamkhanhhand Sep 11, 2025
+    */
+    configControlsAutoConext() {
+        let me = this;
+        let mapping =[];
+         
+
+        //get all 
+        let allControlPage = $("[ct-page='" + me.pageScope + "']");
+
+        allControlPage.filter(function (ix)  {
+             
+            let x = allControlPage[ix];
+
+            let field = $(x).attr('ct-name');
+
+
+            let obj = {
+               
+            };
+
+            obj[field] =  $(x).attr('id');
+
+            mapping.push(obj);
+        });
+
+         
+
+        if (mapping && Array.isArray(mapping)) {
+
+            mapping.filter(function (e) {
+                me[Object.keys(e)[0]] = App[Object.values(e)[0]];
+            });
+        }
+
+        me.afterBindingComplete();
+
+    }
+
 
     ///*
     //* Config mapping control và gọi các hàm khởi động của page
