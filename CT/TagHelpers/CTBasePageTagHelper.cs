@@ -16,6 +16,10 @@ namespace CT.TagHelpers
         public ViewContext ViewContext { get; set; }
 
 
+        [HtmlAttributeName("js-component")]
+        public string jsComponent { get; set; }  // Text của label
+
+
         [HtmlAttributeName("page-scope")]
         public string pageScope { get; set; }  // Text của label
 
@@ -25,14 +29,23 @@ namespace CT.TagHelpers
             base.Process(context, output);
 
 
+            var pageContext = ViewContext?.ViewData["ct-page"]?.ToString();
+
             if (String.IsNullOrWhiteSpace(pageScope))
             {
-
-                var pageContext = ViewContext?.ViewData["ct-page"]?.ToString();
 
                 if (!String.IsNullOrWhiteSpace(pageContext))
                 {
                     this.pageScope = pageContext;
+                }
+            }
+
+            if (String.IsNullOrWhiteSpace(jsComponent))
+            {
+
+                if (!String.IsNullOrWhiteSpace(pageContext))
+                {
+                    this.jsComponent = pageContext;
                 }
             }
 
@@ -41,9 +54,9 @@ namespace CT.TagHelpers
  
     document.addEventListener('DOMContentLoaded', function () {
          
-     var  flexValueSetPage = new CTListForm({pageScope:'" + pageScope + @"'});
+        let autoPage = new "+ jsComponent + @"({pageScope:'" + pageScope + @"'});
         
-        flexValueSetPage. configControlsAutoConext();
+        autoPage.configControlsAutoConext();
     });
 
 </script>

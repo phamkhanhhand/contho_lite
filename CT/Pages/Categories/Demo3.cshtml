@@ -1,0 +1,34 @@
+﻿@page
+@model CT.Pages.Categories.Demo3Model
+@{
+    ViewData["Title"] = "Quản lý danh mục";
+    ViewData["ct-page"] = "Demo3";//nên đặt trùng với tên class js
+}
+
+@* <ct-base-page js-component="@ViewData["ct-page"]"></ct-base-page> *@
+@* luôn phải có ct-base-page để map với js*@
+<ct-base-page></ct-base-page>
+
+@{
+    // Sample menu items
+    var menuItems = new List<CTMenuItem>
+    {
+        new CTMenuItem { Text = "Home", Command = "/" },
+        new CTMenuItem { Text = "About", Command = "/about" },
+        new CTMenuItem { Text = "Contact", Command = "/contact" }
+    };
+}
+ 
+<ct-menu-tool Items="menuItems">
+</ct-menu-tool>
+
+<ct-textbox ct-name="txt1"
+            htmlID='@Model.GetRefID("txt1")'
+            KHSetField="maxValue"
+            Label="Kích thước tối đa">
+</ct-textbox>
+
+
+
+<script src="~/js/business/demo3.js"></script>
+
