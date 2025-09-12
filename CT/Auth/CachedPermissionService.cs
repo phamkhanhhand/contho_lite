@@ -12,6 +12,7 @@ using System.Net.Http.Headers;
 using System.Reflection.Emit;
 using System.Security.Claims;
 using System.Text;
+using System.Text.Json;
 
 namespace CT.Usermanager
 {

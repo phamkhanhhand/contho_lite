@@ -42,7 +42,7 @@ namespace CT.Usermanager
 
             var token = authHeader["Bearer ".Length..].Trim();
 
-            // Parse token (không validate chữ ký ở đây)
+            // Parse token (không validate chữ ký ở đây nữa, vì midware ở program rồi, ở đây bổ sung vào context và author thôi)
             var handler = new JwtSecurityTokenHandler();
             var jwt = handler.ReadJwtToken(token);
 

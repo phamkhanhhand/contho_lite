@@ -1,6 +1,14 @@
 ﻿using CT.Usermanager;
 using Microsoft.AspNetCore.Authorization;
-using System.Net.NetworkInformation;
+using System.Net.NetworkInformation; 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,27 +22,53 @@ builder.Services.AddHttpClient();
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped<IPermissionService, CachedPermissionService>();
 
+ 
 
-//bắt buộc phải có 2 cái này đi với nhau
+// Cấu hình xác thực với JWT Token, không cần chữ ký luôn vì gateway đã có chữ ký rồi
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    { 
+        var pem = File.ReadAllText("Keys/public.pem");
+        var rsa = RSA.Create();
+        rsa.ImportFromPem(pem.ToCharArray()); 
+         
+        //options.Authority = "https://your-identity-server";  // URL của Identity Server
+        //options.Audience = "your_api";  // Audience của API
+        options.TokenValidationParameters = new TokenValidationParameters
+        { 
+            //ValidateIssuerSigningKey = false
+            ValidateIssuer = false,     // Bỏ qua việc kiểm tra Issuer
+            ValidateAudience = false,   // Bỏ qua việc kiểm tra Audience
+            ValidateLifetime = true,    // Kiểm tra thời gian hết hạn của token
+            //ClockSkew = TimeSpan.Zero,   // Không có độ trễ cho thời gian hết hạn
+            ValidateIssuerSigningKey = true, // Bỏ qua kiểm tra chữ ký của token
 
-builder.Services.AddAuthorization(options =>
-{ 
-
-    //policy này 1 là fix cứng, 2 là không truyền tham số, nên ít dùng
-
-    //định nghĩa quy tắc, luật chơi
-    options.AddPolicy("DynamicPolicy", policy => policy.Requirements.Add(new PermissionRequirement()));
-    //PermissionRequirement Là điều kiện cụ thể bên trong quy tắc. Giống như "Bạn phải đủ 18 tuổi"
-});
-
-//như là cảnh sát/bảo vệ kiểm tra điều kiện
-builder.Services.AddSingleton<IAuthorizationHandler, PermissionHandler>();
+            IssuerSigningKey = new RsaSecurityKey(rsa),
+             
+        };
 
 
-//Để phân tách, chặt chém api từ controller truyền vào, để truyền dạng chuỗi
-builder.Services.AddSingleton<IAuthorizationPolicyProvider,CustomAuthorizationPolicyProvider>();
+#if DEBUG
 
+        // Nếu bạn cần xử lý sự kiện, ví dụ log thông tin token hoặc kiểm tra thêm
+        options.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                Console.WriteLine($"Authentication failed: {context.Exception.Message}");
+                return Task.CompletedTask;
+            },
+            OnTokenValidated = context =>
+            {
+                Console.WriteLine($"Token validated: {context.SecurityToken}");
+                return Task.CompletedTask;
+            }
 
+        };
+
+#endif
+
+    });
 
 var app = builder.Build();
 
