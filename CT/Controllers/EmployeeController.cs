@@ -1,6 +1,7 @@
 ﻿using CT.BL;
 ////using CT.Invoice;
 using CT.Models.Entity;
+using CT.Usermanager;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,11 +18,13 @@ namespace KH.Usermanager.Controllers
     [ApiController]
     public class EmployeeController : BaseController<adm_Employee>
     {
-         
+
+
 
         // Phương thức để lấy theo ID (có thể được override)
         //testok
         [HttpGet("GetEmployeeByUsername")]
+        [Permission(scope: "write", uri: "USER_UPDATE")]
         public IActionResult GetEmployeeByUsername()
         {
 

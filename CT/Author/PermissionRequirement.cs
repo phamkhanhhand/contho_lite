@@ -1,12 +1,16 @@
 ﻿using CT.Utils;
+using MathNet.Numerics.Distributions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using System.Reflection.Emit;
 using System.Security.Claims;
 using System.Text;
 
 namespace CT.Usermanager
 {
-
+    //1 policy- có nhiều require ment
+    //1 requirement - có nhiều handle (nhiều hành động kiểm tra)
+    //Đại diện cho điều kiện cần kiểm tra
     public class PermissionRequirement : IAuthorizationRequirement
     {
 
@@ -16,6 +20,8 @@ namespace CT.Usermanager
         }
     }
 
+
+    //Thực hiện logic kiểm tra requirement
     public class PermissionHandler : AuthorizationHandler<PermissionRequirement>
     {
 
