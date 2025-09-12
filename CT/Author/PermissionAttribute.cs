@@ -15,17 +15,45 @@ namespace CT.Usermanager
 {
 
 
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+    public class PermissionAttribute : Attribute, IFilterFactory
+    {
+        public string Scope { get; }
+        public string ApiCode { get; }
+
+        public bool IsReusable => false;
+
+        public PermissionAttribute(string scope, string apiCode)
+        {
+            Scope = scope;
+            ApiCode = apiCode;
+        }
+
+        // Đây là chỗ tạo instance PermissionFilter, ASP.NET Core sẽ gọi
+        public IFilterMetadata CreateInstance(IServiceProvider serviceProvider)
+        {
+            // Lấy IPermissionService và IUserContext từ DI container
+            var permissionService = (IPermissionService)serviceProvider.GetService(typeof(IPermissionService));
+            var userContext = (IUserContext)serviceProvider.GetService(typeof(IUserContext));
+
+            // Trả về filter mới với các dependency đã được inject
+            return new PermissionFilter(Scope, ApiCode, permissionService, userContext);
+        }
+    }
+
+
     /// <summary>
     /// Chỉ là attribute bình thường,không liên quan đến policy của .net core
     /// </summary>
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = true)]
-    public class PermissionAttribute : Attribute, IAsyncAuthorizationFilter
+    public class PermissionAttribute1 : Attribute, IAsyncAuthorizationFilter
     {
         public string Scope { get; }
         public List<string> ListScope { get; }
         public string Uri { get; }
 
-        public PermissionAttribute(string uri, string scope = "", List<string> listScope = null)
+        public PermissionAttribute1(string uri, string scope = "", List<string> listScope = null)
         {
             Scope = scope;
             Uri = uri;

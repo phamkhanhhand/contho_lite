@@ -8,7 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
 
+builder.Services.AddScoped<IUserContext, UserContext>();
 
+builder.Services.AddHttpClient();
+builder.Services.AddMemoryCache();
+builder.Services.AddScoped<IPermissionService, CachedPermissionService>();
 
 
 //bắt buộc phải có 2 cái này đi với nhau
