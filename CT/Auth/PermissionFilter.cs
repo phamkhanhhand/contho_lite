@@ -42,6 +42,9 @@ namespace CT.Usermanager
 
             var token = authHeader["Bearer ".Length..].Trim();
 
+
+            #region Không cần thiết vì lấy ở midware rồi
+
             // Parse token (không validate chữ ký ở đây nữa, vì midware ở program rồi, ở đây bổ sung vào context và author thôi)
             var handler = new JwtSecurityTokenHandler();
             var jwt = handler.ReadJwtToken(token);
@@ -52,16 +55,24 @@ namespace CT.Usermanager
             var roles = jwt.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value).ToArray();
             var scopes = jwt.Claims.Where(c => c.Type == "scope").Select(c => c.Value).ToArray();
 
-            // Gán vào UserContext
+            #endregion
+
+            #region Kiểm tra quyền api
+
+            // Gán vào UserContext, đúng ra dựa vào token token
             _userContext.UserId = userId ?? "";
             _userContext.Username = username ?? "";
             _userContext.Email = email ?? "";
             _userContext.Roles = roles;
             _userContext.Scopes = scopes;
             _userContext.AccessToken = token;
+            #endregion
 
             // Kiểm tra quyền qua service
             var permissions = await _permissionService.GetPermissionsAsync(token);
+
+            //todo
+            var daa_userContext = await _permissionService.GetDataContext(token, username);
 
             if (!permissions.Contains($"{_scope}:{_apiCode}"))
             {
