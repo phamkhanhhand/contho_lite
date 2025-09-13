@@ -1,0 +1,32 @@
+﻿@page
+@model CT.Pages.Demo.Demo2Model
+@{
+    ViewData["Title"] = "Quản lý danh mục";
+    ViewData["ct-page"] = "Demo2";
+}
+
+<ct-base-page></ct-base-page>
+
+
+@{
+    // Sample menu items
+    var menuItems = new List<CTMenuItem>
+    {
+        new CTMenuItem { Text = "Home", Command = "/" },
+        new CTMenuItem { Text = "About", Command = "/about" },
+        new CTMenuItem { Text = "Contact", Command = "/contact" }
+    };
+}
+
+
+
+<ct-menu-tool Items="menuItems">
+</ct-menu-tool>
+
+<ct-textbox ct-name="txt1"
+            htmlID='@Model.GetRefID("txt1")'
+            CTSetField="maxValue"
+            Label="Kích thước tối đa">
+</ct-textbox>
+
+

@@ -1,0 +1,12 @@
+﻿/* styles.css */
+.combo-box {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+    .combo-box option {
+        padding: 5px;
+    }
