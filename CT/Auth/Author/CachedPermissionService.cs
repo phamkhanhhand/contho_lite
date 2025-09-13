@@ -1,20 +1,8 @@
-﻿using CT.Models.Entity;
-using CT.Utils;
-using MathNet.Numerics.Distributions;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http.Headers;
-using System.Reflection.Emit;
-using System.Security.Claims;
-using System.Text;
+﻿using Microsoft.Extensions.Caching.Memory; 
+using System.Net.Http.Headers; 
 using System.Text.Json;
 
-namespace CT.Usermanager
+namespace CT.Auth
 {
     public class CachedPermissionService : IPermissionService
     {

@@ -3,11 +3,11 @@ using CT.Models.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KH.Usermanager.Controllers
+namespace CT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoleController : BaseController<adm_Role>
+    public class RoleController : CTBaseController<adm_Role>
     {
 
 

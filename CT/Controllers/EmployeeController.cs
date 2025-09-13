@@ -1,14 +1,13 @@
 ﻿using CT.BL;
-////using CT.Invoice;
-using CT.Models.Entity;
-using CT.Usermanager;
+using CT.Auth;
+using CT.Models.Entity; 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NPOI.SS.Formula.Functions;
 using System.Security.Claims;
 
-namespace KH.Usermanager.Controllers
+namespace CT.Controllers
 {
     [Route("api/[controller]")]
     [Authorize(Policy = "DynamicPolicy")] 
@@ -16,7 +15,7 @@ namespace KH.Usermanager.Controllers
     //[Authorize(Policy = "RequireEmail")]
     //[Authorize(Roles = "RequireAdministratorRole")] 
     [ApiController]
-    public class EmployeeController : BaseController<adm_Employee>
+    public class EmployeeController : CTBaseController<adm_Employee>
     {
 
 

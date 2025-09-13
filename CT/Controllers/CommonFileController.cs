@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using NPOI.SS.Formula.Functions;
 using System.Security.Claims;
 
-namespace KH.Usermanager.Controllers
+namespace CT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
