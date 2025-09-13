@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens; 
 using System.Security.Cryptography; 
 using System.IdentityModel.Tokens.Jwt;
+using CT.UserContext.CurrentContext;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,8 +16,8 @@ builder.Services.AddControllers();
 //AddSingleton--all app, only one instance
 //AddScoped --each request (the same ssession)
 //AddTransient--each inject
-builder.Services.AddScoped<IUserContext, UserContext>();
-builder.Services.AddScoped<IPermissionService, CachedPermissionService>();
+//builder.Services.AddScoped<IUserContext, UserContext>();
+//builder.Services.AddScoped<IPermissionService, CachedPermissionService>();
 
 
 //IHttpClientFactory singleton, but HttpClient -Transient
@@ -25,6 +26,9 @@ builder.Services.AddHttpClient();
 //Singleton special by micosoft
 builder.Services.AddMemoryCache();
 
+
+//IHttpClientFactory singleton, but HttpContext -scoped
+builder.Services.AddHttpContextAccessor();
 
 
 //controller phải đặt [Authorize] thì mới authen cái này
@@ -89,6 +93,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 var app = builder.Build();
+
+
+var httpContextAccessor = app.Services.GetRequiredService<IHttpContextAccessor>();
+CurrentUserHelper.Configure(httpContextAccessor);
+
 
 
 //Middleware để tự động refresh token nếu access token hết hạn

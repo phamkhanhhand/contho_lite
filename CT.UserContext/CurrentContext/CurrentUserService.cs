@@ -64,7 +64,7 @@ namespace CT.UserContext.CurrentContext
                 if (employee != null)
                 {
                     profile.Employee = employee;
-                    profile.EmployeeID = employee.EmployeeID;
+                    profile.EmployeeID = employee.employee_id;
                 }
 
                 _memoryCache.Set<MyProfile>(username, profile);

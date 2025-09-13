@@ -1,24 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc; 
-using Microsoft.AspNetCore.Mvc.Filters; 
-using System.IdentityModel.Tokens.Jwt; 
-using System.Security.Claims; 
+﻿using CT.BL;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace CT.Auth
 {
 
     public class PermissionFilter : IAsyncAuthorizationFilter
     {
-        private readonly string _scope;
-        private readonly string _apiCode;
-        private readonly IPermissionService _permissionService;
-        private readonly IUserContext _userContext;
+        private readonly string[] listScope;
+        private readonly string _apiUri;
+        //private readonly IPermissionService _permissionService;
+        //private IUserContext _userContext;
 
-        public PermissionFilter(string scope, string apiCode, IPermissionService permissionService, IUserContext userContext)
+        public PermissionFilter(string[] listScope, string apiCode
+            //, IPermissionService permissionService
+            //, IUserContext userContext
+            )
         {
-            _scope = scope;
-            _apiCode = apiCode;
-            _permissionService = permissionService;
-            _userContext = userContext;
+            this.listScope = listScope;
+            _apiUri = apiCode;
+            //_permissionService = permissionService;
+            //_userContext = userContext;
         }
 
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
@@ -48,26 +52,42 @@ namespace CT.Auth
 
             #endregion
 
-            #region Kiểm tra quyền api
-
-            // Gán vào UserContext, đúng ra dựa vào token token
-            _userContext.UserId = userId ?? "";
-            _userContext.Username = username ?? "";
-            _userContext.Email = email ?? "";
-            _userContext.Roles = roles;
-            _userContext.Scopes = scopes;
-            _userContext.AccessToken = token;
-            #endregion
 
             // Kiểm tra quyền qua service
-            var permissions = await _permissionService.GetPermissionsAsync(token);
+            //var permissions = await _permissionService.GetPermissionsAsync(token);
 
-            //todo
-            var daa_userContext = await _permissionService.GetDataContext(token, username);
 
-            if (!permissions.Contains($"{_scope}:{_apiCode}"))
+            #region Check Permission from database
+
+            adm_PermissionBL adm_PermissionBL = new adm_PermissionBL();
+
+            var allowProcess = adm_PermissionBL.CheckPermision(username, listScope.ToList<string>(), this._apiUri);
+
+            #endregion 
+
+            
+            if (!allowProcess)
             {
                 context.Result = new ForbidResult();
+            }
+            else
+            {
+
+                 
+
+                #region Context
+                //_userContext = await _permissionService.GetDataContext(username);
+
+
+                //// Gán vào UserContext, đúng ra dựa vào token token
+                //_userContext.UserId = userId ?? "";
+                //_userContext.Username = username ?? "";
+                //_userContext.Email = email ?? "";
+                ////_userContext.Roles = roles;
+                ////_userContext.Scopes = scopes;
+                //_userContext.AccessToken = token;
+                #endregion
+
             }
         }
     }

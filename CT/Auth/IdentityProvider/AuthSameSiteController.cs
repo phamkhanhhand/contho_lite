@@ -1,14 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
- 
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using CT.Auth;
-using System.Security.Cryptography;
-using Microsoft.AspNetCore.Identity.Data;
-using Azure.Core;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Mvc;
+using CT.Auth; 
 
 namespace CT.Controllers
 {

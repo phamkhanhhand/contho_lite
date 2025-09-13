@@ -2,15 +2,67 @@
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static ICSharpCode.SharpZipLib.Zip.ExtendedUnixData;
 
 namespace CT.DL
 {
     public class adm_EmployeeDL : BaseDL
     {
         DLUtil dLUtil = new DLUtil();
+
+
+
+        /// <summary>
+        /// Check permision
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        /// phamkhanhhand Sep 13, 2025
+        public bool CheckPermision(string userName, List<string>listScope, string uri)
+        {
+            var rs = false;
+
+            var sql = @"[dbo].[proc_CheckPermission]";
+
+            // Tạo DataTable cho TVP
+            DataTable scopeTable = new DataTable();
+            scopeTable.Columns.Add("value", typeof(string));
+
+            for (int i = 0;i< listScope.Count; i++)
+            {
+                scopeTable.Rows.Add(listScope[i]); 
+            }
+
+            SqlCommand cmd = new SqlCommand(sql);
+
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            // Tham số TVP
+            SqlParameter tvpParam = cmd.Parameters.AddWithValue("@list_scope", scopeTable);
+            tvpParam.SqlDbType = SqlDbType.Structured;
+            tvpParam.TypeName = "dbo.type_list_string";
+
+             
+            cmd.Parameters.AddWithValue("@username", userName);
+            cmd.Parameters.AddWithValue("@uri", uri);
+
+            //DataPermissionService permissionService = new DataPermissionService();
+
+            //permissionService.BuidWherePermissionClause(cmd, "employee");
+
+            var rsDB = util.ExecuteScalar(cmd);
+
+            if (rsDB != null && rsDB != DBNull.Value)
+            {
+                // Chuyển đổi an toàn sang bool
+                rs = Convert.ToBoolean(rsDB);
+            } 
+            return rs;
+        }
 
 
         /// <summary>
@@ -25,17 +77,16 @@ namespace CT.DL
             var sql = @"
 select *
 from adm_Employee a
-where a.Username = @Username
-@KHPermision
+where a.Username = @Username 
 ";
 
             SqlCommand cmd = new SqlCommand(sql);
 
             cmd.Parameters.AddWithValue("@userName", userName);
 
-            DataPermissionService permissionService = new DataPermissionService();
+            //DataPermissionService permissionService = new DataPermissionService();
 
-            permissionService.BuidWherePermissionClause( cmd, "employee");
+            //permissionService.BuidWherePermissionClause( cmd, "employee");
 
             return util.SelectList<adm_Employee>(cmd).FirstOrDefault();
 

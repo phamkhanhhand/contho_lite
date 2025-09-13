@@ -114,6 +114,21 @@ namespace CT.DL
             return cmd.ExecuteNonQuery();
         }
 
+
+        public object ExecuteScalar(SqlCommand cmd)
+        {
+            OpenConnection();
+            cmd.Connection = con;
+
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+
+            return cmd.ExecuteScalar();
+        }
+
+
         /// <summary>
         /// Lấy dataset sau khi thực hiện lệnh truy vấn cmd
         /// </summary>

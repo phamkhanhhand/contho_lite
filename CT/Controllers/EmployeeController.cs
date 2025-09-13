@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NPOI.SS.Formula.Functions;
 using System.Security.Claims;
+using CT.Models.Enumeration;
+using CT.UserContext.CurrentContext;
 
 namespace CT.Controllers
 {
-    [Route("api/[controller]")]
-    [Authorize(Policy = "DynamicPolicy")] 
 
-    //[Authorize(Policy = "RequireEmail")]
-    //[Authorize(Roles = "RequireAdministratorRole")] 
+    [Authorize]
+    [Route("api/[controller]")]  
     [ApiController]
     public class EmployeeController : CTBaseController<adm_Employee>
     {
@@ -23,13 +23,15 @@ namespace CT.Controllers
         // Phương thức để lấy theo ID (có thể được override)
         //testok
         [HttpGet("GetEmployeeByUsername")]
-        [Permission(scope: "write", uri: "USER_UPDATE")]
+        [Permission(uri: "/api/employee/GetEmployeeByUsername", API_SCOPES.VIEW, API_SCOPES.CREATE)]
         public IActionResult GetEmployeeByUsername()
         {
+            var username = CurrentUserHelper.GetCurrentProfileEmployee(); 
 
-            adm_EmployeeBL  bl = new adm_EmployeeBL();
 
-            var rs = bl.GetEmployeeByUsername("phamkhanhhand");
+            adm_EmployeeBL bl = new adm_EmployeeBL();
+
+            var rs = bl.GetEmployeeByUsername("phamha");
 
             return Ok(rs);
         }
