@@ -1,4 +1,5 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
+using System.Runtime.CompilerServices;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using Microsoft.IdentityModel.Tokens;
@@ -7,19 +8,26 @@ namespace CT.Auth
 {
     public static class CTJwtHelper
     {
-
+        //để ra ngoài lấy cache tránh bị mở file confilict
+        private static RsaSecurityKey SigningKey;
 
 
 
         public static string GenerateAccessToken(string username)
         {
-            // 1. Load private key để ký token
-            var privateKeyText = System.IO.File.ReadAllText("Keys/private.pem");
-            using var rsa = RSA.Create();
-            rsa.ImportFromPem(privateKeyText.ToCharArray());
 
-            var signingKey = new RsaSecurityKey(rsa);
+            if (SigningKey == null)
+            {
 
+                // 1. Load private key để ký token
+                var privateKeyText = System.IO.File.ReadAllText("Keys/private.pem");
+                var rsa = RSA.Create();
+                rsa.ImportFromPem(privateKeyText.ToCharArray());
+
+
+                SigningKey = new RsaSecurityKey(rsa);
+
+            }
 
 
             // 2. Tạo các claims
@@ -37,7 +45,7 @@ namespace CT.Auth
                 audience: null,
                 claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(30),
-                signingCredentials: new SigningCredentials(signingKey, SecurityAlgorithms.RsaSha256)
+                signingCredentials: new SigningCredentials(SigningKey, SecurityAlgorithms.RsaSha256)
             );
 
 

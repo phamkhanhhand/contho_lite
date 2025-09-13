@@ -8,6 +8,7 @@ using CT.Auth;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Identity.Data;
 using Azure.Core;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CT.Controllers
 {
@@ -18,14 +19,17 @@ namespace CT.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] CTLoginRequest request)
         {
-            if (request.Username != "admin" || request.Password != "123456")
+            // 1. Kiểm tra user/pass
+            var isPassLogin = CTAuthService.Login(request.Username, request.Password);
+
+            if (!isPassLogin)
+            {
                 return Unauthorized();
+            }
 
             var accessToken = CTJwtHelper.GenerateAccessToken(request.Username);
             var refreshToken = CTJwtHelper.GenerateSecureRefreshToken();
-
-            // Lưu refresh token vào DB (ràng buộc user, device, IP, v.v.)
-            CTAuthService.Save(refreshToken, request.Username);
+             
 
             // Set cookie access token (30 phút)
             Response.Cookies.Append("access_token", accessToken, new CookieOptions
@@ -44,8 +48,16 @@ namespace CT.Controllers
                 SameSite = SameSiteMode.Strict,
                 Expires = DateTimeOffset.UtcNow.AddDays(7)
             });
+                
+            // Lưu refresh token vào memory hoặc DB (demo)
+            CTAuthService.Save(refreshToken, request.Username);
 
-            return Ok(new { message = "Login successful" });
+            return Ok(new
+            {
+                access_token = accessToken,
+                refresh_token = refreshToken
+            });
+
         }
 
         [HttpPost("logout")]
@@ -60,7 +72,22 @@ namespace CT.Controllers
         }
 
 
-         
+
+        [HttpPost("signin")] 
+        public IActionResult Signin([FromBody] CTLoginRequest request)
+        {
+            var isPassLogin = CTAuthService.Signin(request.Username, request.Password);
+
+            if (isPassLogin)
+            {
+
+                return Ok(new { message = request.Username });
+            }
+            else
+            {
+                return Unauthorized();
+            }
+        }
 
 
     }

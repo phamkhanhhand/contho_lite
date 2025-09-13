@@ -11,6 +11,7 @@ namespace CT.Auth
         }
         public static bool VerifyPassword(string plainPassword, string hashedPasswordFromDb)
         {
+            //coz bcrypt has salt with has,cant equal ==
             return BCrypt.Net.BCrypt.Verify(plainPassword, hashedPasswordFromDb);
         }
 
@@ -20,14 +21,23 @@ namespace CT.Auth
 
             var hashPass = HashPassword(password);
 
+
             //get from database by username, active...
-            var hashDB = "";
+
+
+            AuthDL dl = new AuthDL();
+            var acc = dl.GetLoginInfoByUsername(username);
 
             // 1. Kiểm tra user/pass
-            if (username == "admin") //&&&hashDB
+            if (acc == null)
+            {
+                rs = false;
+            }
+            else if (VerifyPassword(password, acc.password_hash))
             {
                 rs = true;
             }
+
 
             return rs;
         }
@@ -36,15 +46,20 @@ namespace CT.Auth
         
         public static bool Signin(string username, string password)
         {
+            AuthDL dl = new AuthDL();
             var rs = false;
 
             var hashPass = HashPassword(password);
 
             
             //save username, password to db
+            auth_accounts acc = new auth_accounts();
+            acc.username = username;
+            acc.password_hash = hashPass;
+
+            dl.Signin(acc);
             rs = true;
-
-
+             
             return rs;
         }
 

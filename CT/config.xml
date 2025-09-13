@@ -2,8 +2,8 @@
 <configuration>
 	<appSettings>
 
-		<!--<add key="db_connect" value="Server=ALEXANDERKEVIN\\SQLEXPRESS;Database=KH.ITFamily;Trusted_Connection=True;;TrustServerCertificate=True;" />-->
-
+		<add key="db_connect_auth" value="Server=ALEXANDERKEVIN\SQLEXPRESS;Database=CT.CONTHOLITE;Trusted_Connection=True;TrustServerCertificate=True;" />
+ 
 		<add key="db_connect" value="Server=ALEXANDERKEVIN\SQLEXPRESS;Database=KH.ITFamily.IdentityProvider1;User Id=sa;Password=1;TrustServerCertificate=True;" />
 
 

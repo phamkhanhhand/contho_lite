@@ -19,4 +19,8 @@
     <ProjectReference Include="..\CT.Utils\CT.Utils.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DatabaseScripts\" />
+  </ItemGroup>
+
 </Project>

@@ -14,7 +14,7 @@ namespace CT.Controllers
             // 1. Kiểm tra user/pass
             var isPassLogin = CTAuthService.Login(request.Username, request.Password);
 
-            if(!isPassLogin)
+            if (!isPassLogin)
             {
                 return Unauthorized();
             }
@@ -60,6 +60,23 @@ namespace CT.Controllers
             return Ok(new { message = "Logged out successfully" });
         }
 
+
+        [HttpPost("signin")] 
+        public IActionResult Signin([FromBody] CTLoginRequest request)
+        {
+
+            var isPassLogin = CTAuthService.Signin(request.Username, request.Password);
+
+            if (isPassLogin)
+            {
+
+                return Ok(new { message = request.Username });
+            }
+            else
+            {
+                return Unauthorized();
+            }
+        }
 
     }
 
