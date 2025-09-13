@@ -3,11 +3,11 @@ using CT.Models.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KH.Usermanager.Controllers
+namespace CT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FeatureController : BaseController<adm_Feature>
+    public class FeatureController : CTBaseController<adm_Feature>
     {
         [HttpGet("GetPermisionByFeatureID/{id}")]
 

@@ -10,28 +10,28 @@ namespace CT.Models.Entity
     /// Employee
     /// </summary>
     /// phamkhanhhand 14.04.2023
-    [EntityKey("employee_id", "adm_employee_seq")]
-    [DatabaseViewName("adm_employee")]
-    public class adm_Employee : BaseEntity
+    [EntityKey("OrganizationID", "adm_Organization_seq")]
+    [DatabaseViewName("adm_Organization")]
+    public class adm_Organization : BaseEntity
     {
 
         /// <summary>
         /// ID
         /// </summary>
         /// phamkhanhhand 05.07.2023
-        public int employee_id { get; set; }
+        public int EmployeeID { get; set; }
         /// <summary>
         /// Mã nhân viên
         /// </summary>
         /// phamkhanhhand 05.07.2023
-        public string?  employee_code { get; set; }
+        public string?  EmployeeCode { get; set; }
         /// <summary>
         /// Tên nhân viên
         /// </summary>
         /// phamkhanhhand 05.07.2023
-        public string employee_name { get; set; }
-        public string? username { get; set; }
-        public DateTime? created_date { get; set; }
+        public string EmployeeName { get; set; }
+        public string? Username { get; set; }
+        public DateTime? CreatedDate { get; set; }
          
 
     }

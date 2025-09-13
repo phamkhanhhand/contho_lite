@@ -8,6 +8,22 @@ using System.Threading.Tasks;
 
 namespace CT.Models.Enumeration
 {
+    /// <summary>
+    /// scoope
+    /// </summary>
+    public static class API_SCOPES
+    {
+        public const string VIEW = "VIEW";
+        public const string CREATE = "CREATE";
+        public const string UPDATE = "UPDATE";
+        public const string DELETE = "DELETE";
+        public const string IMPORT = "IMPORT";
+        public const string EXPORT = "EXPORT";
+        public const string SEND = "SEND";
+        public const string APPROVE = "APPROVE";  
+    }
+
+
 
     /// <summary>
     /// NameSpace của các loại

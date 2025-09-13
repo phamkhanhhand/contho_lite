@@ -1,33 +1,37 @@
 ﻿using CT.BL;
-////using CT.Invoice;
-using CT.Models.Entity;
+using CT.Auth;
+using CT.Models.Entity; 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NPOI.SS.Formula.Functions;
 using System.Security.Claims;
+using CT.Models.Enumeration;
+using CT.UserContext.CurrentContext;
 
-namespace KH.Usermanager.Controllers
+namespace CT.Controllers
 {
-    [Route("api/[controller]")]
-    [Authorize(Policy = "DynamicPolicy")] 
 
-    //[Authorize(Policy = "RequireEmail")]
-    //[Authorize(Roles = "RequireAdministratorRole")] 
+    [Authorize]
+    [Route("api/[controller]")]  
     [ApiController]
-    public class EmployeeController : BaseController<adm_Employee>
+    public class EmployeeController : CTBaseController<adm_Employee>
     {
-         
+
+
 
         // Phương thức để lấy theo ID (có thể được override)
         //testok
         [HttpGet("GetEmployeeByUsername")]
+        [Permission(uri: "/api/employee/GetEmployeeByUsername", API_SCOPES.VIEW, API_SCOPES.CREATE)]
         public IActionResult GetEmployeeByUsername()
         {
+            var username = CurrentUserHelper.GetCurrentProfileEmployee(); 
 
-            adm_EmployeeBL  bl = new adm_EmployeeBL();
 
-            var rs = bl.GetEmployeeByUsername("phamkhanhhand");
+            adm_EmployeeBL bl = new adm_EmployeeBL();
+
+            var rs = bl.GetEmployeeByUsername("phamha");
 
             return Ok(rs);
         }

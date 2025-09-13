@@ -25,7 +25,7 @@ and exists(
 
              
             //todo lấy từ context 
-            var currentUserID = CurrentUserService.GetCurrentProfileEmployee()?.EmployeeID;
+            var currentUserID = CurrentUserHelper.GetCurrentProfileEmployee()?.EmployeeID;
 
 
 

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KH.Usermanager.Controllers
+namespace CT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

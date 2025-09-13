@@ -1,28 +1,20 @@
-﻿//using CT.Common;
-using CT.Models.Entity;
+﻿ 
+using System.Data; 
+using System.Reflection; 
 using CT.Utils;
 using Microsoft.Data.SqlClient;
-using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Reflection;
-using System.Web;
-using System.Xml;
 
-namespace CT.DL
+namespace CT.Auth
 {
 
     /// <summary>
     /// Tiện ích connect
     /// </summary>
-    /// phamkhanhhand
+    /// phamha
     public class DLUtil : IDisposable
     {
 
-        private string connectionString = "Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;";
+        private string connectionString = "";
 
         public void Dispose()
         {
@@ -40,12 +32,8 @@ namespace CT.DL
                 //TODO cái này lúc nào tự viết
                 //connectionString = FileManager.ReadConnectString();
             }
-
-            connectionString = XmlConfigReader.GetAppSettingValue("db_connect");
-
-            //connectionString = "Server=ALEXANDERKEVIN\\SQLEXPRESS;Database=CT;Trusted_Connection=True;;TrustServerCertificate=True;";
-            //connectionString = "Server=ALEXANDERKEVIN\\SQLEXPRESS;Database=CT;User Id=sa;Password=1;TrustServerCertificate=True ";
-       
+              
+            connectionString = XmlConfigReader.GetAppSettingValue("db_connect_auth");
             this.connectionString = connectionString;
         }
 
@@ -54,7 +42,7 @@ namespace CT.DL
         /// <summary>
         /// Mở connect
         /// </summary>
-        /// phamkhanhhand
+        /// phamha
         public void OpenConnection()
         {
             if (con == null || con.State == ConnectionState.Closed)
@@ -66,7 +54,7 @@ namespace CT.DL
         /// <summary>
         /// Đóng connect
         /// </summary>
-        /// phamkhanhhand
+        /// phamha
         public void CloseConnection()
         {
             if (con != null && con.State == ConnectionState.Open)
@@ -80,7 +68,7 @@ namespace CT.DL
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
-        /// phamkhanhhand
+        /// phamha
         public DataSet ExcuteDataSet(string sql)
         {
             OpenConnection();
@@ -100,41 +88,19 @@ namespace CT.DL
         /// </summary>
         /// <param name="cmd"></param>
         /// <returns></returns>
-        /// phamkhanhhand 17.04.2023
+        /// pkha 17.04.2023
         public int ExcuteNonQuery(SqlCommand cmd)
         {
             OpenConnection();
-            cmd.Connection = con;
-
-            if(con.State == ConnectionState.Closed)
-            {
-                con.Open();
-            }
-
             return cmd.ExecuteNonQuery();
         }
-
-
-        public object ExecuteScalar(SqlCommand cmd)
-        {
-            OpenConnection();
-            cmd.Connection = con;
-
-            if (con.State == ConnectionState.Closed)
-            {
-                con.Open();
-            }
-
-            return cmd.ExecuteScalar();
-        }
-
 
         /// <summary>
         /// Lấy dataset sau khi thực hiện lệnh truy vấn cmd
         /// </summary>
         /// <param name="cmd"></param>
         /// <returns></returns>
-        /// phamkhanhhand
+        /// phamha
         public DataSet ExcuteDataSet(SqlCommand cmd)
         {
             OpenConnection();
@@ -147,296 +113,13 @@ namespace CT.DL
 
             return ds;
         }
-
-        /// <summary>
-        /// Lấy entity theo id
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        /// phamkhanhhand 07.07.2023
-        public T GetByID<T>(object id)
-        {
-            T result = default(T);
-            var tableName = typeof(T).Name;
-
-            var keyName = tableName + "ID";
-
-            string viewName = "";
-            bool findingViewName = true,//timf view
-                findingKey = true;//tim key cua bang
-
-
-            System.Reflection.MemberInfo info = typeof(T);
-            object[] attributes = info.GetCustomAttributes(true);
-
-            for (int i = 0; i < attributes.Length; i++)
-            {
-                if (findingViewName && attributes[i] is DatabaseViewName)
-                {
-                    viewName = ((DatabaseViewName)attributes[i]).ViewName;
-                    findingViewName = false;
-                }
-
-                if (findingKey && attributes[i] is EntityKey)
-                {
-                    keyName = ((EntityKey)attributes[i]).KeyName;
-                    findingKey = false;
-                }
-                if (!(findingKey || findingViewName))
-                {
-                    break;
-                }
-
-            }
-
-            viewName = string.IsNullOrWhiteSpace(viewName) ? tableName : viewName;
-
-            //Nếu id là guid thì cho dấu nháy vào
-            if (id is Guid)
-            {
-                id += "\"" + id + "\"";
-            }
-
-            var sql = "select * from [{0}] where {1}=" + id;
-
-            sql = string.Format(sql, viewName, keyName);
-
-
-
-            OpenConnection();
-            DataSet ds = new DataSet();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-            da.SelectCommand = cmd;
-            da.Fill(ds);
-
-            if (ds.Tables != null && ds.Tables.Count > 0)
-            {
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    var fistRow = ds.Tables[0].Rows[0];
-
-                    result = GetItemFromDataRow<T>(fistRow);
-                }
-
-            }
-
-            return result;
-        }
-
-
-
-        /// <summary>
-        /// Lấy entity theo id
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        /// phamkhanhhand
-        /// Lấy thông tin theoID
-        public T GetByType<T>(SqlCommand cmd)
-        {
-            OpenConnection();
-            var result = default(object);
-            var type = typeof(T);
-
-
-             
-
-            DataSet ds = new DataSet();
-            cmd.Connection = con;
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-            da.SelectCommand = cmd;
-            da.Fill(ds);
-
-            if (ds.Tables != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                var fistRow = ds.Tables[0].Rows[0];
-
-                result = GetItemFromDataRow(type, fistRow);
-
-            }
-
-            return (T)result;
-        }
-
-
-
-        /// <summary>
-        /// Lấy entity theo id
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        /// phamkhanhhand
-        /// Lấy thông tin theoID
-        public object GetByID(Type type, object id)
-        {
-            OpenConnection();
-            var result = default(object);
-            var tableName = type.Name;
-
-            var keyName = tableName + "ID";
-
-
-            System.Reflection.MemberInfo info = type;
-            object[] attributes = info.GetCustomAttributes(true);
-
-            for (int i = 0; i < attributes.Length; i++)
-            {
-                if (attributes[i] is EntityKey)
-                {
-                    keyName = ((EntityKey)attributes[i]).KeyName;
-                }
-            }
-
-
-            //Nếu id là guid thì cho dấu nháy vào
-            //if (id is Guid)
-            //{
-            //    id += "\"" + id + "\"";
-            //}
-
-            id = "'" + id + "'";
-
-
-            var sql = "select * from {0} where {0}ID=" + id;
-
-            sql = string.Format(sql, tableName, keyName);
-
-            DataSet ds = new DataSet();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-            da.SelectCommand = cmd;
-            da.Fill(ds);
-
-            if (ds.Tables != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                var fistRow = ds.Tables[0].Rows[0];
-
-                result = GetItemFromDataRow(type, fistRow);
-
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        /// Get data by columnvalue
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="columnName"></param>
-        /// <param name="columnValue"></param>
-        /// <returns></returns>
-        /// phamkhanhhand Nov 23, 2024
-        public T GetByColumn<T>(string columnName, object columnValue)
-        {
-            var type = typeof(T);
-
-            OpenConnection();
-            var result = default(object);
-            var tableName = type.Name; 
-
-            System.Reflection.MemberInfo info = type;
-            object[] attributes = info.GetCustomAttributes(true);
-
-
-            //Nếu id là guid thì cho dấu nháy vào
-            //if (id is Guid)
-            //{
-            //    id += "\"" + id + "\"";
-            //}
-
-            columnValue = "'" + columnValue + "'";
-
-
-            var sql = "select top 1 * from {0} where {1}=" + columnValue;
-
-            sql = string.Format(sql, tableName, columnName);
-
-            DataSet ds = new DataSet();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-            da.SelectCommand = cmd;
-            da.Fill(ds);
-
-            if (ds.Tables != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                var fistRow = ds.Tables[0].Rows[0];
-
-                result = GetItemFromDataRow(type, fistRow);
-
-            }
-
-            return (T)result;
-        }
-
-
-        /// <summary>
-        /// Get data by columnvalue
-        /// </summary>
-        /// <param name="type"></param>
-        /// <param name="columnName"></param>
-        /// <param name="columnValue"></param>
-        /// <returns></returns>
-        /// phamkhanhhand Nov 23, 2024
-        public List<T> GetListByColumn<T>(string columnName, object columnValue)
-        {
-            var type = typeof(T);
-
-            OpenConnection();
-            var result = default(object);
-            var tableName = type.Name;
-
-            System.Reflection.MemberInfo info = type;
-            object[] attributes = info.GetCustomAttributes(true);
-
-
-            //Nếu id là guid thì cho dấu nháy vào
-            //if (id is Guid)
-            //{
-            //    id += "\"" + id + "\"";
-            //}
-
-            columnValue = "'" + columnValue + "'";
-
-
-            var sql = "select * from {0} where {1}=" + columnValue;
-
-            sql = string.Format(sql, tableName, columnName);
-
-            DataSet ds = new DataSet();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-            da.SelectCommand = cmd;
-            da.Fill(ds);
-
-            if (ds.Tables != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                var dt = ds.Tables[0]; 
-
-                result = ConvertDataTableToList<T>(dt);
-
-            }
-
-            return (List<T>)result;
-        }
-
-
-
-
+          
         /// <summary>
         /// Insert vào bảng
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
-        /// phamkhanhhand
+        /// phamha
         public bool Insert(string sql)
         {
             OpenConnection();
@@ -463,7 +146,7 @@ namespace CT.DL
         /// <param name="id"></param>
         /// <returns></returns>
         /// Lấy thông tin theoID
-        /// phamkhanhhandok
+        /// phamhaok
         public bool ExcuteSqlCommand(SqlCommand cmd, string sql)
         {
             OpenConnection();
@@ -479,34 +162,12 @@ namespace CT.DL
             return true;
         }
 
-        /// <summary>
-        /// Lấy danh sách entity theo id (vd: danh sách detail theo masterID)
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        /// Lấy thông tin theoID
-        /// phamkhanhhandok
-        public object ExcuteSqlCommandScalar(SqlCommand cmd, string sql)
-        {
-            OpenConnection();
-
-            if (con.State == ConnectionState.Closed)
-            {
-                con.Open();
-            }
-
-            cmd.Connection = con;
-            cmd.CommandText = sql;
-            return cmd.ExecuteScalar(); 
-        }
-
 
         /// <summary>
         /// Lấy danh sách column của bảng
         /// </summary>
         /// <returns></returns>
-        /// phamkhanhhand 23.07.2023
+        /// pkha 23.07.2023
         public string[] GetColumnsName(string tableName)
         {
             OpenConnection();
@@ -550,7 +211,7 @@ namespace CT.DL
         /// <param name="id"></param>
         /// <returns></returns>
         /// Lấy thông tin theoID
-        /// phamkhanhhand 17.04.2023
+        /// pkha 17.04.2023
         public List<object> SelectList(Type type, SqlCommand cmd)
         {
             OpenConnection();
@@ -587,7 +248,7 @@ namespace CT.DL
         /// <param name="id"></param>
         /// <returns></returns>
         /// Lấy thông tin theoID
-        /// phamkhanhhand
+        /// phamha
         public List<T> SelectList<T>(SqlCommand cmd)
         {
             OpenConnection();
@@ -623,8 +284,8 @@ namespace CT.DL
         /// <typeparam name="T"></typeparam>
         /// <param name="id"></param>
         /// <returns></returns>
-        /// phamkhanhhand 05.07.2023
-        public List<T> SelectListWithTotal<T>(SqlCommand cmd, out int totalResultRecord, string totalColumnName = "phamkhanhhand_totalPaging")
+        /// pkha 05.07.2023
+        public List<T> SelectListWithTotal<T>(SqlCommand cmd, out int totalResultRecord, string totalColumnName = "pkha_totalPaging")
         {
             totalResultRecord = 0;
 
@@ -672,7 +333,7 @@ namespace CT.DL
         /// <typeparam name="T"></typeparam>
         /// <param name="dt"></param>
         /// <returns></returns>
-        /// phamkhanhhand
+        /// phamha
         private static List<T> ConvertDataTableToList<T>(DataTable dt)
         {
             List<T> data = new List<T>();
@@ -692,8 +353,7 @@ namespace CT.DL
             {
                 foreach (PropertyInfo pro in temp.GetProperties())
                 {
-                    //thupth  23.11.2024 fix lỗi phân biệt chữ hoa chữ thường
-                    if ( string.Compare(pro.Name, column.ColumnName, StringComparison.OrdinalIgnoreCase)==0)
+                    if (pro.Name == column.ColumnName)
                     {
                         var objectVal = dr[column.ColumnName];
                         if (objectVal != DBNull.Value)
@@ -718,7 +378,7 @@ namespace CT.DL
         /// <typeparam name="T"></typeparam>
         /// <param name="dt"></param>
         /// <returns></returns>
-        /// phamkhanhhand
+        /// phamha
         private static List<object> ConvertDataTableToList(Type type, DataTable dt)
         {
             List<object> data = new List<object>();
@@ -739,8 +399,7 @@ namespace CT.DL
             {
                 foreach (PropertyInfo pro in type.GetProperties())
                 {
-                    //thupth  23.11.2024 fix lỗi phân biệt chữ hoa chữ thường
-                    if (string.Compare(pro.Name, column.ColumnName, StringComparison.OrdinalIgnoreCase) == 0)
+                    if (pro.Name == column.ColumnName)
                     {
                         var objectVal = dr[column.ColumnName];
                         if (objectVal != DBNull.Value)
@@ -761,5 +420,44 @@ namespace CT.DL
         #endregion
 
 
+
+        #region Authen project
+
+        /// <summary>
+        /// Lấy danh sách entity theo id (vd: danh sách detail theo masterID)
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// Lấy thông tin theoID
+        /// phamha
+        public T Select<T>(SqlCommand cmd)
+        {
+            OpenConnection();
+
+            cmd.Connection = con;
+
+            T result = default(T);
+
+            DataSet ds = new DataSet();
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            da.SelectCommand = cmd;
+            da.Fill(ds);
+
+            if (ds.Tables != null && ds.Tables.Count > 0)
+            {
+                var dataSet = ExcuteDataSet(cmd);
+
+                if (dataSet.Tables.Count > 0)
+                {
+                    result = ConvertDataTableToList<T>(dataSet.Tables[0]).FirstOrDefault();
+                }
+            }
+
+            return result;
+        }
+        #endregion
     }
 }

@@ -8,11 +8,11 @@ using CT.Models.ServerObject;
 using CT.ImExReport;
 
 
-namespace KH.Usermanager.Controllers
+namespace CT.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public abstract class BaseController<T> : ControllerBase where T : BaseEntity
+    public abstract class CTBaseController<T> : ControllerBase where T : BaseEntity
     {
         private readonly BaseBL bl = BLFactory.CreateBLByType(typeof(T));
 

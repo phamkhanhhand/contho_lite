@@ -7,11 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.20" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CT.BL\CT.BL.csproj" />
     <ProjectReference Include="..\CT.DL\CT.DL.csproj" />
     <ProjectReference Include="..\CT.ImExReport\CT.ImExReport.csproj" />
     <ProjectReference Include="..\CT.Models\CT.Models.csproj" />
     <ProjectReference Include="..\CT.Utils\CT.Utils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DatabaseScripts\" />
   </ItemGroup>
 
 </Project>
