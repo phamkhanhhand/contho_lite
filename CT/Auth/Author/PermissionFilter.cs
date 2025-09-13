@@ -10,19 +10,12 @@ namespace CT.Auth
     public class PermissionFilter : IAsyncAuthorizationFilter
     {
         private readonly string[] listScope;
-        private readonly string _apiUri;
-        //private readonly IPermissionService _permissionService;
-        //private IUserContext _userContext;
+        private readonly string _apiUri; 
 
-        public PermissionFilter(string[] listScope, string apiCode
-            //, IPermissionService permissionService
-            //, IUserContext userContext
-            )
+        public PermissionFilter(string[] listScope, string apiCode  )
         {
             this.listScope = listScope;
-            _apiUri = apiCode;
-            //_permissionService = permissionService;
-            //_userContext = userContext;
+            _apiUri = apiCode; 
         }
 
         public async Task OnAuthorizationAsync(AuthorizationFilterContext context)
@@ -52,11 +45,7 @@ namespace CT.Auth
 
             #endregion
 
-
-            // Kiểm tra quyền qua service
-            //var permissions = await _permissionService.GetPermissionsAsync(token);
-
-
+             
             #region Check Permission from database
 
             adm_PermissionBL adm_PermissionBL = new adm_PermissionBL();
@@ -69,26 +58,7 @@ namespace CT.Auth
             if (!allowProcess)
             {
                 context.Result = new ForbidResult();
-            }
-            else
-            {
-
-                 
-
-                #region Context
-                //_userContext = await _permissionService.GetDataContext(username);
-
-
-                //// Gán vào UserContext, đúng ra dựa vào token token
-                //_userContext.UserId = userId ?? "";
-                //_userContext.Username = username ?? "";
-                //_userContext.Email = email ?? "";
-                ////_userContext.Roles = roles;
-                ////_userContext.Scopes = scopes;
-                //_userContext.AccessToken = token;
-                #endregion
-
-            }
+            } 
         }
     }
 

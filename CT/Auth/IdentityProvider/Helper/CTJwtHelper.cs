@@ -32,10 +32,10 @@ namespace CT.Auth
             // 2. Tạo các claims
             var claims = new List<Claim>
         {
-            new Claim(JwtRegisteredClaimNames.Sub, username),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Sub, username),//id
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),//id token
             new Claim(ClaimTypes.Name, username),
-            new Claim(ClaimTypes.Role, "Admin") // Hardcoded, bạn có thể lấy từ DB
+            //new Claim(ClaimTypes.Role, "Admin") // Hardcoded, bạn có thể lấy từ DB
         };
 
             // 3. Tạo thông tin token

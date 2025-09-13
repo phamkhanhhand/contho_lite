@@ -33,7 +33,7 @@ namespace CT.BL
         /// <returns></returns>
         public List<adm_Feature> GetAllMenuByCurrentUser()
         {
-            var employeeID = CurrentUserService.GetCurrentProfileEmployee()?.EmployeeID;
+            var employeeID = CurrentUserHelper.GetCurrentProfileEmployee()?.EmployeeID;
 
             if (employeeID != null)
             {
@@ -51,7 +51,7 @@ namespace CT.BL
 
         public List<ViewPermision> GetAllPermisionByFeatureByCurrentUser(string featureCode)
         {
-            var employeeID = CurrentUserService.GetCurrentProfileEmployee()?.EmployeeID;
+            var employeeID = CurrentUserHelper.GetCurrentProfileEmployee()?.EmployeeID;
 
             if (employeeID != null)
             {

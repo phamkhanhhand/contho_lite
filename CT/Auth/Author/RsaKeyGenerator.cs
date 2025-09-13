@@ -9,8 +9,7 @@ namespace CT.Auth
 
     /*
      * util gen key
-     * 
-            RsaKeyGenerator.Export();
+     * RsaKeyGenerator.Export();
      * */
     class RsaKeyGenerator
     {
