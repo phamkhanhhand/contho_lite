@@ -1,4 +1,5 @@
 ﻿using CT.DL;
+using CT.Models.DTO;
 using CT.Models.Entity;
 using CT.Models.ServerObject;
 using System;
@@ -22,7 +23,24 @@ namespace CT.BL
         {
             //return new List<Type>() { typeof(Contract) };
             return new List<Type>() { };
-        } 
+        }
+
+
+
+
+        public bool AddLink(ParentChildDTO linkSetDTO)
+        {
+            var rs = false;
+
+            adm_flex_valuesDL dl = new adm_flex_valuesDL();
+
+            //todo validate cant drop link if has value parent-child link.
+            //todo validate set_id is true
+
+            rs = dl.AddLink(linkSetDTO);
+
+            return rs;
+        }
 
 
     }

@@ -15,7 +15,7 @@ namespace CT.Controllers
     [ApiController]
     public abstract class CTBaseController<T> : ControllerBase where T : BaseEntity
     {
-        private readonly BaseBL bl = BLFactory.CreateBLByType(typeof(T));
+        protected readonly BaseBL bl = BLFactory.CreateBLByType(typeof(T));
 
 
         /// <summary>

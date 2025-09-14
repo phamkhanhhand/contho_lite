@@ -178,13 +178,24 @@ namespace CT.Models.Enumeration
 
 
     /// <summary>
-    /// Trạng thái entity
+    ///   entity status enable/disable
     /// </summary>
     public static class EnableFlag
     {
         public const string Enable = "Y";
         public const string Disable = "N"; 
     }
+
+    /// <summary>
+    /// Trạng thái entity
+    /// </summary>
+    public enum HierarchyType
+    {
+        TypeSet = 0,
+        TypeValue = 1,
+    }
+
+    
 
 
     /// <summary>

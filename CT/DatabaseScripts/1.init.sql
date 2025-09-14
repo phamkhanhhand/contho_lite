@@ -209,5 +209,10 @@ GO
 CREATE TYPE dbo.[type_list_string] AS TABLE( 
 	[value] [nvarchar](4000) NULL
 )
+ 
+CREATE TYPE [dbo].[type_list_bigint] AS TABLE(
+	[value] bigint NULL
+)
 GO
+
 
