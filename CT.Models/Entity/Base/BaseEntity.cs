@@ -10,11 +10,20 @@ namespace CT.Models.Entity
 {
     public class BaseEntity
     {
-        public EntityState ?  EntityState { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public DateTime? ModifiedDate { get; set; }
-        public string? CreatedBy { get; set; }
-        public string? ModifiedBy { get; set; }
+        public DateTime? created_date { get; set; }
+        public DateTime? modified_date { get; set; }
+        public string? created_by { get; set; }
+        public string? modified_by { get; set; }
+
+        /// <summary>
+        /// Version (DB sql server is TIMESTAMP); not datetime
+        /// </summary>
+        /// phamkhanhhand Dec 29, 2024
+        public byte[]? edit_version { get; set; }
+
+
+
+        public EntityState? EntityState { get; set; }
 
         private List<ErrorObject> listErrorObject;
 
@@ -31,12 +40,6 @@ namespace CT.Models.Entity
             set { listErrorObject = value; }
         }
 
-
-        /// <summary>
-        /// Version (DB sql server là TIMESTAMP); không phải thời gian
-        /// </summary>
-        /// phamkhanhhand Dec 29, 2024
-        public byte[]? EditVersion { get; set; }
 
     }
 }

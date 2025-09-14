@@ -1224,14 +1224,14 @@ insert into {0}( " + keyName + @",{1})
 
 
             #region Check version
-            var editVersion = ((BaseEntity)entity).EditVersion;
+            var editVersion = ((BaseEntity)entity).edit_version;
 
             if (editVersion != null)
             {
 
 
                 var sqlVersion = @"
-            select editversion
+            select edit_version
 from {0}
 where {1}
 ";
@@ -1322,7 +1322,7 @@ where {1}
 
                     cmd.Parameters.AddWithValue("@" + name, value);
 
-                    if (!string.Equals("EditVersion", name, StringComparison.OrdinalIgnoreCase))
+                    if (!string.Equals("edit_version", name, StringComparison.OrdinalIgnoreCase))
                     {
                         lstValue += ", " + name + " = @" + name;
                     }
@@ -1346,15 +1346,15 @@ where {1}
 
             #region Check version
 
-            if (isCheckEditVersion && lstColumnInDatabase.Contains("EditVersion"))
+            if (isCheckEditVersion && lstColumnInDatabase.Contains("edit_version"))
             {
 
-                var editVersion = ((BaseEntity)entity).EditVersion;
+                var editVersion = ((BaseEntity)entity).edit_version;
 
                 if (editVersion != null)
                 {
                     var sqlVersion = @"
-            select editversion
+            select edit_version
 from {0}
 where {1}
 ";

@@ -160,7 +160,7 @@ namespace CT.DL
             T result = default(T);
             var tableName = typeof(T).Name;
 
-            var keyName = tableName + "ID";
+            var keyName = tableName + "_id";
 
             string viewName = "";
             bool findingViewName = true,//timf view
@@ -279,7 +279,7 @@ namespace CT.DL
             var result = default(object);
             var tableName = type.Name;
 
-            var keyName = tableName + "ID";
+            var keyName = tableName + "_id";
 
 
             System.Reflection.MemberInfo info = type;
@@ -303,7 +303,7 @@ namespace CT.DL
             id = "'" + id + "'";
 
 
-            var sql = "select * from {0} where {0}ID=" + id;
+            var sql = "select * from {0} where {1}=" + id;
 
             sql = string.Format(sql, tableName, keyName);
 

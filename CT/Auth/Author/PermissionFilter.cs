@@ -10,7 +10,7 @@ namespace CT.Auth
     public class PermissionFilter : IAsyncAuthorizationFilter
     {
         private readonly string[] listScope;
-        private readonly string _apiUri; 
+        private string _apiUri; 
 
         public PermissionFilter(string[] listScope, string apiCode  )
         {
@@ -50,11 +50,34 @@ namespace CT.Auth
 
             adm_PermissionBL adm_PermissionBL = new adm_PermissionBL();
 
+
+            if (string.IsNullOrWhiteSpace(this._apiUri))
+            {
+                var controllerName = (string)context.RouteData.Values["controller"];
+                var action = (string)context.RouteData.Values["action"];
+
+                var endpoint = context.HttpContext.GetEndpoint();
+
+                var routeTemplate = (endpoint as RouteEndpoint)?.RoutePattern?.RawText;
+
+                if (string.IsNullOrWhiteSpace(routeTemplate))
+                {
+                    routeTemplate = action;
+                }
+
+                this._apiUri = $"/api/{controllerName}/{routeTemplate}";
+            }
+
+
             var allowProcess = adm_PermissionBL.CheckPermision(username, listScope.ToList<string>(), this._apiUri);
 
-            #endregion 
+            #endregion
 
-            
+#if DEBUG
+
+            allowProcess = true;
+#endif
+
             if (!allowProcess)
             {
                 context.Result = new ForbidResult();

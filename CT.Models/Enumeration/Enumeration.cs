@@ -178,6 +178,16 @@ namespace CT.Models.Enumeration
 
 
     /// <summary>
+    /// Trạng thái entity
+    /// </summary>
+    public static class EnableFlag
+    {
+        public const string Enable = "Y";
+        public const string Disable = "N"; 
+    }
+
+
+    /// <summary>
     /// Lỗi validate entity
     /// </summary>
     public enum ValidationErrorType : int

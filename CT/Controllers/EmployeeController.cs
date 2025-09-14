@@ -20,8 +20,7 @@ namespace CT.Controllers
 
 
 
-        // Phương thức để lấy theo ID (có thể được override)
-        //testok
+        // Phương thức để lấy theo ID (có thể được override) 
         [HttpGet("GetEmployeeByUsername")]
         [Permission(uri: "/api/employee/GetEmployeeByUsername", API_SCOPES.VIEW, API_SCOPES.CREATE)]
         public IActionResult GetEmployeeByUsername()

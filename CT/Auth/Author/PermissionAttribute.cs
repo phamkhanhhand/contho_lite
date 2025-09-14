@@ -14,7 +14,7 @@ namespace CT.Auth
         public bool IsReusable => false;
 
 
-        public PermissionAttribute( string uri, params string[] listScope)
+        public PermissionAttribute(string uri="", params string[] listScope)
         { 
             Uri = uri;
             ListScope = listScope ?? new string[0];
